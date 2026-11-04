@@ -1,22 +1,59 @@
-# Supabase setup
+# Подключение Supabase
 
-1. Create a Supabase project.
-2. Open **SQL Editor**, paste `migrations/202610140001_initial_platform.sql`, and run it once.
-3. In **Authentication → URL Configuration**, set the Site URL to the GitHub Pages URL and add the same URL to Redirect URLs:
-   `https://eldar0904.github.io/English-City-/`
-4. In GitHub, open **Settings → Secrets and variables → Actions → Variables** and add:
-   - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_ANON_KEY`
-5. Re-run the `Deploy English City` workflow.
+Без ключей Supabase сайт работает в **демо-режиме**: все данные хранятся в браузере, а на странице входа есть кнопки «Войти как студент» и «Войти как админ». Чтобы сайт заработал по-настоящему, сделайте следующее.
 
-For local development, copy `.env.example` to `.env.local` and fill the same two public values. Do not commit `.env.local`.
+## 1. Проект и база
 
-New accounts are students by default. To promote the first teacher after signup, run this in the Supabase SQL Editor, replacing the email:
+1. Создайте проект на [supabase.com](https://supabase.com). Регион лучше выбрать поближе, например Frankfurt.
+2. Откройте **SQL Editor** и по одному выполните файлы из `migrations/` в порядке их имён, каждый один раз:
+   `202611010001_school_platform.sql`, `202611020001_plan_prices.sql`, `202611020002_english_content.sql`, `202611040001_kaspi_qr.sql`.
+   Первый скрипт создаёт таблицы, правила доступа (RLS), функции подтверждения оплаты и хранилища для аудио и картинок.
+   Если раньше в этом проекте запускалась старая демо-схема, её таблицы будут удалены.
+3. Там же выполните `seed.sql`, только после всех миграций: он загрузит стартовые тарифы, настройки оплаты и примеры курсов на трёх языках.
+   Если вы поменяли `src/data/seed.ts`, сначала пересоберите файл командой `npm run seed:sql`.
 
-```sql
-update public.profiles
-set role = 'teacher'
-where id = (select id from auth.users where email = 'teacher@example.com');
+## 2. Ключи для сайта
+
+**Project Settings → API**: скопируйте `Project URL` и ключ `anon public` в файл `.env.local` в корне проекта:
+
+```
+VITE_SUPABASE_URL=https://xxxx.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJ...
 ```
 
-Teachers only see students assigned through `class_members`. The schema enforces this through Row Level Security.
+Ключ `anon` публичный: доступ к данным защищён правилами RLS в базе. Ключ `service_role` в сайт не кладите никогда.
+
+## 3. Первый администратор
+
+Зарегистрируйтесь на сайте, затем выполните в SQL Editor (подставьте свой email):
+
+```sql
+update public.profiles set role = 'admin'
+where id = (select id from auth.users where email = 'you@example.com');
+```
+
+Остальных администраторов можно назначать прямо в админке: «Студенты» → «Доступ» → «Сделать администратором».
+
+## 4. Вход по email
+
+**Authentication → URL Configuration**:
+- **Site URL**: адрес сайта. Для локальной разработки это `http://localhost:5173`.
+- **Redirect URLs**: добавьте `http://localhost:5173/**`, а позже адрес продакшна.
+
+По умолчанию Supabase просит подтвердить email письмом. Встроенная отправка писем ограничена несколькими письмами в час, поэтому для продакшна подключите свой SMTP: **Authentication → Emails → SMTP Settings**.
+
+## 5. Вход через Google
+
+1. В [Google Cloud Console](https://console.cloud.google.com/apis/credentials) создайте **OAuth client ID** с типом *Web application*.
+2. В поле **Authorized redirect URIs** укажите `https://<ваш-проект>.supabase.co/auth/v1/callback`.
+3. В Supabase откройте **Authentication → Providers → Google**, включите провайдер и вставьте Client ID и Client Secret.
+
+## 6. Kaspi QR
+
+QR школы и ссылка на оплату уже записаны миграцией и `seed.sql`, сама картинка лежит в `public/kaspi-qr.png`. Заменить их можно в админке → «Kaspi QR»: загруженная там картинка хранится в публичном бакете `public-assets`.
+
+## Как устроен доступ
+
+- Подписка открывает все курсы. Студент оставляет заявку «Я оплатил»: сумма и срок берутся из тарифа на стороне базы, подделать их нельзя. Администратор нажимает «Подтвердить», и функция `approve_payment` создаёт период доступа. Если подписка уже активна, новый срок прибавляется к текущему.
+- Уроки с флажком «Бесплатный» открыты всем. Материалы и задания остальных уроков база отдаёт только при активной подписке, это проверяет функция `can_open_lesson`.
+- Записи голоса лежат в приватном бакете `student-audio` в папке студента. Доступ к ним есть только у самого студента и у администратора. Голосовые ответы администратора кладутся в ту же папку.

@@ -1,0 +1,75 @@
+/* English City — tokens from the Verba design system v2 (tokens.json). Light theme only, as in the system. */
+:root {
+  color-scheme: light;
+
+  --bg: #f6f6fb;
+  --surface: #ffffff;
+  --surface-muted: #f6f7fb;
+  --line: #ececf2;
+  --line-strong: #dedee6;
+  --ink: #0f0f12;
+  --ink-2: #4a4b50;
+  --ink-3: #6e6e75;
+  --violet: #6e63e5;
+  --violet-strong: #5b4fd6;
+  --violet-soft: #ece9fc;
+  --violet-200: #d2cffc;
+  --on-violet: #ffffff;
+  --dark: #0e0e10;
+  --on-dark: #ffffff;
+  --pink: #c653c0;
+  --pink-soft: #f9e9fc;
+  --pink-text: #a8409f;
+  --sky: #3e9bd3;
+  --sky-soft: #ebf4fb;
+  --sky-text: #23729e;
+  --star: #f9b00c;
+  --success: #1f8f5f;
+  --danger: #d04820;
+  --focus: var(--violet);
+  --scrim: rgba(14, 14, 16, 0.32);
+
+  /* Status shades the system doesn't define, derived to sit beside it (text ≥4.5:1 on its soft fill). */
+  --success-soft: #e6f5ee;
+  --success-text: #17734d;
+  --warning: #b86e00;
+  --warning-soft: #fdf1dc;
+  --warning-text: #8a5200;
+  --danger-soft: #fceee9;
+  --danger-text: #b23c18;
+
+  --shadow-sm: 0 1px 2px rgba(15, 15, 18, 0.04);
+  --shadow-md: 0 12px 32px -16px rgba(15, 15, 18, 0.16);
+  --shadow-frame: 0 40px 80px -40px rgba(15, 15, 18, 0.25);
+
+  --font-sans: "Plus Jakarta Sans", "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+  --radius-2xl: 28px;
+  --radius-pill: 999px;
+
+  --control-sm: 32px;
+  --control-md: 40px;
+  --control-lg: 48px;
+  --sidebar-width: 240px;
+  --rail-width: 320px;
+  --content-max: 1200px;
+  --measure: 68ch;
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
