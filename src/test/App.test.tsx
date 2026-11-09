@@ -11,7 +11,7 @@ describe("English City", () => {
   it("shows the catalog from the starter content", async () => {
     render(<App />);
     expect(await screen.findByRole("heading", { name: "Курсы английского" })).toBeInTheDocument();
-    expect(await screen.findByText("Everyday English")).toBeInTheDocument();
+    expect(await screen.findByText("Pre-Intermediate Course")).toBeInTheDocument();
     expect(screen.getByText("First Steps")).toBeInTheDocument();
   });
 

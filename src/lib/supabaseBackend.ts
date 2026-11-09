@@ -1,4 +1,5 @@
 import { supabase } from "./supabase";
+import { signupPasswordIsValid } from "./password";
 import type { Backend } from "./backend";
 import type {
   Course,
@@ -45,6 +46,7 @@ export function createSupabaseBackend(): Backend {
       check(await db.auth.signInWithPassword({ email, password }));
     },
     async signUp({ email, password, full_name, phone }) {
+      if (!signupPasswordIsValid(password)) throw new Error("Password must contain 4–8 characters.");
       const data = check(
         await db.auth.signUp({
           email,

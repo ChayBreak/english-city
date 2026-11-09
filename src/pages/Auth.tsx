@@ -6,6 +6,7 @@ import { useAuth } from "../lib/auth";
 import { useI18n } from "../lib/i18n";
 import { navigate, useLocation } from "../lib/router";
 import { errorText } from "../lib/util";
+import { signupPasswordIsValid } from "../lib/password";
 import { DemoBar, LocaleSwitch } from "../layout";
 import { Button, Field, Logo, Notice, SPARK } from "../ui";
 
@@ -27,8 +28,6 @@ export default function AuthPage({ mode }: { mode: "login" | "signup" }) {
   const next = query.get("next")?.startsWith("/") ? query.get("next")! : "/account";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [info, setInfo] = useState("");
@@ -53,7 +52,8 @@ export default function AuthPage({ mode }: { mode: "login" | "signup" }) {
     try {
       if (mode === "login") await backend.signIn(email.trim(), password);
       else {
-        const needsConfirm = await backend.signUp({ email: email.trim(), password, full_name: name.trim(), phone: phone.trim() });
+        if (!signupPasswordIsValid(password)) throw new Error(t("auth.passwordHint"));
+        const needsConfirm = await backend.signUp({ email: email.trim(), password, full_name: "", phone: "" });
         if (needsConfirm) setInfo(t("auth.confirmEmail", { email: email.trim() }));
       }
     } catch (err) {
@@ -113,28 +113,6 @@ export default function AuthPage({ mode }: { mode: "login" | "signup" }) {
             </div>
 
             <form className="stack" onSubmit={submit}>
-              {mode === "signup" && (
-                <>
-                  <Field label={t("auth.name")}>
-                    {(id) => (
-                      <input id={id} className="input" required autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} />
-                    )}
-                  </Field>
-                  <Field label={t("auth.phone")} hint={t("auth.phoneHint")}>
-                    {(id) => (
-                      <input
-                        id={id}
-                        className="input"
-                        type="tel"
-                        autoComplete="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder="+7 7__ ___ __ __"
-                      />
-                    )}
-                  </Field>
-                </>
-              )}
               <Field label="Email">
                 {(id) => (
                   <input
@@ -156,7 +134,8 @@ export default function AuthPage({ mode }: { mode: "login" | "signup" }) {
                     className="input"
                     type="password"
                     required
-                    minLength={mode === "signup" ? 8 : undefined}
+                    minLength={mode === "signup" ? 4 : undefined}
+                    maxLength={mode === "signup" ? 8 : undefined}
                     autoComplete={mode === "login" ? "current-password" : "new-password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}

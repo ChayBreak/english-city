@@ -1,6 +1,7 @@
 // Starter content: the plans, payment settings and sample courses a new school
 // opens with. The demo mode reads it directly; `npm run seed:sql` turns it into
 // supabase/seed.sql for a real project. Everything here is editable in the admin.
+import { preIntermediateLessons } from "./preIntermediate.ts";
 import type {
   Course,
   Lesson,
@@ -25,7 +26,7 @@ export const seedPlans: Plan[] = [
     description_kk: "Форматты байқап, алғашқы курсты өту үшін.",
     description_en: "Try the format and complete your first course.",
     days: 30,
-    price: 7000,
+    price: 7700,
     old_price: null,
     featured: false,
     is_active: true,
@@ -107,7 +108,8 @@ const A2 = id(300);
 const BUSINESS = id(400);
 const CUTTS_TALK = "https://www.youtube.com/watch?v=UNP03fDSj1U";
 
-export const seedCourses: SeedCourse[] = [
+export const seedCourses: SeedCourse[] = [];
+const originalCourses: SeedCourse[] = [
   {
     id: A1,
     slug: "first-steps-a1",
@@ -397,17 +399,17 @@ export const seedCourses: SeedCourse[] = [
   {
     id: B1,
     slug: "everyday-english-b1",
-    title: "Everyday English",
-    title_kk: "Everyday English",
-    title_en: "Everyday English",
-    subtitle: "Истории, перемены и уверенная речь в прошедшем времени",
-    subtitle_kk: "Әңгімелер, өзгерістер және өткен шақта сенімді сөйлеу",
-    subtitle_en: "Stories, changes and confident speaking in the past tense",
+    title: "Pre-Intermediate Course",
+    title_kk: "Pre-Intermediate Course",
+    title_en: "Pre-Intermediate Course",
+    subtitle: "Досуг и спорт, первый опыт, работа и отдых · A2 → B1",
+    subtitle_kk: "Бос уақыт пен спорт, алғашқы тәжірибе, жұмыс пен демалыс · A2 → B1",
+    subtitle_en: "Leisure and sport, first experiences, work and rest · A2 → B1",
     description:
-      "Юнит о новых начинаниях: словарь для рассказа о переменах, past simple и past continuous, чтение, аудирование по TED-выступлению, собственная история вслух и письменно. Задания на речь и письмо проверяет преподаватель.",
+      "18 уроков в трёх разделах по последовательности Cutting Edge Third Edition: оригинальные тексты, словарь, грамматика, произношение, тесты и письменные задания. Основной материал на английском с русскими подсказками. Диалоги пока доступны как тексты без аудио.",
     description_kk:
-      "Жаңа бастамалар туралы бөлім: өзгерістер туралы айтуға арналған сөздер, past simple және past continuous, оқу, TED баяндамасы бойынша тыңдалым, өз әңгімеңізді ауызша және жазбаша айту. Сөйлеу мен жазу тапсырмаларын оқытушы тексереді.",
-    description_en: "A unit about new beginnings: vocabulary for talking about change, past simple and past continuous, reading, listening to a TED talk, and telling your own story out loud and in writing. A teacher checks the speaking and writing tasks.",
+      "Cutting Edge Third Edition ретіне негізделген үш бөлімдегі 18 сабақ: түпнұсқа мәтіндер, сөздік, грамматика, айтылым, тесттер және жазба тапсырмалар. Негізгі материал ағылшынша, орысша көмекпен. Диалогтар әзірге аудиосыз мәтін түрінде берілген.",
+    description_en: "18 original lessons in three units following the Cutting Edge Third Edition sequence. Practise vocabulary, grammar, pronunciation, reading and writing, with unit quizzes and teacher-reviewed responses. Dialogues currently have transcripts only. Core material is English with Russian support.",
     level: "B1",
     category: "general",
     glyph: "New",
@@ -935,3 +937,11 @@ export const seedCourses: SeedCourse[] = [
     ],
   },
 ];
+
+seedCourses.push(...originalCourses.map((course) => course.id === B1 ? {
+  ...course,
+  lessons: [
+    ...preIntermediateLessons,
+    ...course.lessons.map((lesson) => ({ ...lesson, is_published: false, sort: 100 + lesson.sort })),
+  ],
+} : course));

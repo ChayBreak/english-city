@@ -1,6 +1,7 @@
 // Demo mode: the whole school in the browser's localStorage, used when
 // Supabase keys aren't configured. Mirrors the rules the database enforces.
 import { seedCourses, seedPaymentSettings, seedPlans } from "../data/seed";
+import { signupPasswordIsValid } from "./password";
 import type { Backend } from "./backend";
 import type {
   Course,
@@ -37,7 +38,7 @@ type DB = {
 
 const DB_KEY = "ec-demo-db";
 const SESSION_KEY = "ec-demo-session";
-const VERSION = 5;
+const VERSION = 6;
 export const DEMO_ADMIN_ID = "demo-admin";
 export const DEMO_STUDENT_ID = "demo-student";
 
@@ -138,6 +139,23 @@ function load(): DB {
     if (raw) {
       const parsed = JSON.parse(raw) as DB;
       if (parsed.version === VERSION) return parsed;
+      if (parsed.version === 5) {
+        const fresh = seedDb();
+        const courseId = "00000000-0000-4000-8000-000000000100";
+        const updated = fresh.courses.find((course) => course.id === courseId)!;
+        parsed.courses = parsed.courses.map((course) => course.id === courseId ? updated : course);
+        const archived = new Map(fresh.lessons.filter((lesson) => lesson.course_id === courseId && !lesson.is_published).map((lesson) => [lesson.id, lesson.sort]));
+        parsed.lessons = parsed.lessons.map((lesson) => archived.has(lesson.id) ? { ...lesson, is_published: false, sort: archived.get(lesson.id)! } : lesson);
+        parsed.lessons.push(...fresh.lessons.filter((lesson) => lesson.course_id === courseId && lesson.is_published));
+        const ids = new Set(parsed.lessons.filter((lesson) => lesson.course_id === courseId && lesson.is_published).map((lesson) => lesson.id));
+        parsed.materials.push(...fresh.materials.filter((material) => ids.has(material.lesson_id)));
+        parsed.tasks.push(...fresh.tasks.filter((task) => ids.has(task.lesson_id)));
+        const planId = seedPlans[0].id;
+        parsed.plans = parsed.plans.map((plan) => plan.id === planId ? { ...plan, price: 7700 } : plan);
+        parsed.version = VERSION;
+        localStorage.setItem(DB_KEY, JSON.stringify(parsed));
+        return parsed;
+      }
     }
   } catch {
     /* fall through to a fresh store */
@@ -260,6 +278,7 @@ export function createDemoBackend(): DemoBackend {
       setSession(user.id);
     },
     async signUp({ email, password, full_name, phone }) {
+      if (!signupPasswordIsValid(password)) throw new Error("Password must contain 4–8 characters.");
       if (db.users.some((u) => u.email.toLowerCase() === email.trim().toLowerCase())) {
         throw new Error("User already registered");
       }

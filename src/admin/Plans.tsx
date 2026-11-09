@@ -25,7 +25,7 @@ export default function Plans() {
         description_kk: "",
         description_en: "",
         days: 30,
-        price: 7000,
+        price: 7700,
         old_price: null,
         featured: false,
         is_active: false,
