@@ -1,13 +1,29 @@
 import { CheckCircle2, ChevronRight, Clock, Lock, PlayCircle, Unlock } from "lucide-react";
+import { ELEMENTARY_A2_SLUG, elementaryA2Sections } from "../data/elementaryA2";
 import { backend } from "../lib/backend";
 import { useAuth } from "../lib/auth";
 import { useI18n } from "../lib/i18n";
 import { Link } from "../lib/router";
+import type { Lesson, Locale } from "../lib/types";
 import { useAsync } from "../lib/useAsync";
 import { Badge, Button, CATEGORY_META, CourseCover, Empty, ErrorState, Loading, ProgressBar } from "../ui";
 
+function courseSections(slug: string, lessons: Lesson[], locale: Locale) {
+  if (slug !== ELEMENTARY_A2_SLUG) return [{ title: null, lessons }];
+
+  const remaining = new Set(lessons);
+  const sections: { title: string | null; lessons: Lesson[] }[] = [];
+  for (const unit of elementaryA2Sections) {
+    const items = lessons.filter((lesson) => unit.lessonIds.has(lesson.id));
+    items.forEach((lesson) => remaining.delete(lesson));
+    if (items.length) sections.push({ title: unit.title[locale], lessons: items });
+  }
+  if (remaining.size) sections.push({ title: null, lessons: [...remaining] });
+  return sections;
+}
+
 export default function CoursePage({ slug }: { slug: string }) {
-  const { t, tn, pick, date } = useI18n();
+  const { t, tn, pick, date, locale } = useI18n();
   const { profile, hasAccess, accessUntil, isAdmin } = useAuth();
   const { data, error, loading, reload } = useAsync(() => backend.getCourse(slug), [slug]);
   const progress = useAsync(
@@ -33,6 +49,8 @@ export default function CoursePage({ slug }: { slug: string }) {
   const firstOpen = lessons.find((lesson) => hasAccess || lesson.is_free);
   const nextLesson = lessons.find((lesson) => !completed.has(lesson.id) && (hasAccess || lesson.is_free)) ?? firstOpen;
   const totalMinutes = lessons.reduce((sum, lesson) => sum + lesson.minutes, 0);
+  const lessonNumbers = new Map(lessons.map((lesson, index) => [lesson.id, index + 1]));
+  const sections = courseSections(slug, lessons, locale);
 
   return (
     <div className="page" style={{ paddingTop: 16 }}>
@@ -72,28 +90,31 @@ export default function CoursePage({ slug }: { slug: string }) {
             <div className="stack">
               <h2 className="h3">{t("course.program")}</h2>
               {lessons.length ? (
-                <ol className="lesson-list">
-                  {lessons.map((lesson, index) => {
-                    const open = hasAccess || lesson.is_free;
-                    const done = completed.has(lesson.id);
-                    return (
-                      <li key={lesson.id} className={`lesson-row ${done ? "done" : ""} ${open ? "" : "locked"}`}>
-                        <Link to={`/lessons/${lesson.id}`}>
-                          <span className="lesson-index">{done ? <CheckCircle2 size={18} strokeWidth={2} /> : index + 1}</span>
-                          <span className="lesson-info">
-                            <b>{pick(lesson, "title")}</b>
-                            {pick(lesson, "summary") && <span>{pick(lesson, "summary")}</span>}
-                          </span>
-                          <span className="lesson-side">
-                            {lesson.is_free && !hasAccess && <Badge tone="success">{t("common.free")}</Badge>}
-                            <span className="num">{t("common.minutes", { n: lesson.minutes })}</span>
-                            {open ? <ChevronRight strokeWidth={1.75} /> : <Lock strokeWidth={1.75} aria-label={t("course.locked")} />}
-                          </span>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ol>
+                sections.map((section) => <div className="stack-sm" key={section.lessons[0].id}>
+                  {section.title && <h3 className="tile-title">{section.title}</h3>}
+                  <ol className="lesson-list">
+                    {section.lessons.map((lesson) => {
+                      const open = hasAccess || lesson.is_free;
+                      const done = completed.has(lesson.id);
+                      return (
+                        <li key={lesson.id} className={`lesson-row ${done ? "done" : ""} ${open ? "" : "locked"}`}>
+                          <Link to={`/lessons/${lesson.id}`}>
+                            <span className="lesson-index">{done ? <CheckCircle2 size={18} strokeWidth={2} /> : lessonNumbers.get(lesson.id)}</span>
+                            <span className="lesson-info">
+                              <b>{pick(lesson, "title")}</b>
+                              {pick(lesson, "summary") && <span>{pick(lesson, "summary")}</span>}
+                            </span>
+                            <span className="lesson-side">
+                              {lesson.is_free && !hasAccess && <Badge tone="success">{t("common.free")}</Badge>}
+                              <span className="num">{t("common.minutes", { n: lesson.minutes })}</span>
+                              {open ? <ChevronRight strokeWidth={1.75} /> : <Lock strokeWidth={1.75} aria-label={t("course.locked")} />}
+                            </span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </div>)
               ) : (
                 <p className="muted">{t("course.noLessons")}</p>
               )}

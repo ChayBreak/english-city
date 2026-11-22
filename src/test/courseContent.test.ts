@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { seedCourses, seedPlans } from "../data/seed";
 import { signupPasswordIsValid } from "../lib/password";
 import { createDemoBackend } from "../lib/demoBackend";
+import { elementaryA2Course, elementaryA2Sections } from "../data/elementaryA2";
 
 describe("pre-intermediate content", () => {
   it("publishes 18 ordered lessons with valid task relationships", () => {
@@ -51,6 +52,49 @@ describe("pre-intermediate content", () => {
     const updated = JSON.parse(localStorage.getItem('ec-demo-db')!);
     expect(updated.payments).toEqual(stored.payments);
     expect(updated.submissions).toEqual(stored.submissions);
-    expect(updated.version).toBe(6);
+    expect(updated.version).toBe(7);
+  });
+});
+
+describe("Elementary A2", () => {
+  it("adds six units and keeps a single free lesson with all activities", async () => {
+    localStorage.clear();
+    const api = createDemoBackend();
+    const { lessons } = (await api.getCourse(elementaryA2Course.slug))!;
+    expect(lessons).toHaveLength(24);
+    expect(elementaryA2Sections.map((unit) => unit.lessonIds.size)).toEqual([4, 4, 4, 4, 4, 4]);
+    expect(lessons.filter((lesson) => lesson.is_free).map((lesson) => lesson.sort)).toEqual([1]);
+    const trial = (await api.getLesson(lessons[0].id))!;
+    expect(trial.materials?.body_kk).toContain("Үлгіні оқыңыз");
+    expect(trial.tasks.map((task) => task.kind)).toEqual(["vocabulary", "pronunciation", "quiz"]);
+    expect((await api.getLesson(lessons[1].id))?.materials).toBeNull();
+    expect(elementaryA2Course.lessons.filter((lesson) =>
+      lesson.tasks.some((task) => task.kind === "writing"),
+    )).toHaveLength(6);
+    const allIds = seedCourses.flatMap((course) => [course.id, ...course.lessons.flatMap((lesson) => [lesson.id, ...lesson.tasks.map((task) => task.id)])]);
+    expect(new Set(allIds).size).toBe(allIds.length);
+  });
+
+  it("upgrades a v6 demo account without resetting its previously saved work", async () => {
+    localStorage.clear();
+    const existing = createDemoBackend();
+    await existing.signUp({ email: "existing@example.com", password: "p6xr", full_name: "", phone: "" });
+    const user = (await existing.currentUserId())!;
+    const course = (await existing.getCourse("first-steps-a1"))!;
+    await existing.completeLesson(user, course.lessons[0].id);
+
+    const stored = JSON.parse(localStorage.getItem("ec-demo-db")!);
+    const newIds = new Set(elementaryA2Course.lessons.map((lesson) => lesson.id));
+    stored.version = 6;
+    stored.courses = stored.courses.filter((course: { id: string }) => course.id !== elementaryA2Course.id);
+    stored.lessons = stored.lessons.filter((lesson: { id: string }) => !newIds.has(lesson.id));
+    stored.materials = stored.materials.filter((material: { lesson_id: string }) => !newIds.has(material.lesson_id));
+    stored.tasks = stored.tasks.filter((task: { lesson_id: string }) => !newIds.has(task.lesson_id));
+    localStorage.setItem("ec-demo-db", JSON.stringify(stored));
+
+    const upgraded = createDemoBackend();
+    expect(await upgraded.currentUserId()).toBe(user);
+    expect((await upgraded.getProgress(user)).completed).toContain(course.lessons[0].id);
+    expect((await upgraded.getCourse(elementaryA2Course.slug))?.lessons).toHaveLength(24);
   });
 });

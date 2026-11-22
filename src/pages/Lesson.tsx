@@ -68,32 +68,6 @@ export default function LessonPage({ id }: { id: string }) {
           <span>{pick(lesson, "title")}</span>
         </nav>
         <div className="lesson-layout">
-          <nav className="lesson-nav" aria-label={t("lesson.contents")}>
-            <div className="lesson-nav-title">
-              <span className="caption">
-                {course.level} · {t("lesson.contents")}
-              </span>
-              <b lang="en">{pick(course, "title")}</b>
-            </div>
-            {lessons.map((item) => {
-              const open = hasAccess || item.is_free;
-              const isDone = completed.has(item.id);
-              const Icon = isDone ? CheckCircle2 : !open ? Lock : item.id === lesson.id ? PlayCircle : Circle;
-              return (
-                <Link
-                  key={item.id}
-                  to={`/lessons/${item.id}`}
-                  className={isDone ? "done" : ""}
-                  aria-current={item.id === lesson.id ? "page" : undefined}
-                >
-                  <Icon strokeWidth={1.75} />
-                  <span>{pick(item, "title")}</span>
-                  <span className="caption num">{item.minutes}′</span>
-                </Link>
-              );
-            })}
-          </nav>
-
           <div className="lesson-main">
             <header className="stack-sm">
               <div className="row">
@@ -171,6 +145,32 @@ export default function LessonPage({ id }: { id: string }) {
               </>
             )}
           </div>
+
+          <nav className="lesson-nav" aria-label={t("lesson.contents")}>
+            <div className="lesson-nav-title">
+              <span className="caption">
+                {course.level} · {t("lesson.contents")}
+              </span>
+              <b lang="en">{pick(course, "title")}</b>
+            </div>
+            {lessons.map((item) => {
+              const open = hasAccess || item.is_free;
+              const isDone = completed.has(item.id);
+              const Icon = isDone ? CheckCircle2 : !open ? Lock : item.id === lesson.id ? PlayCircle : Circle;
+              return (
+                <Link
+                  key={item.id}
+                  to={`/lessons/${item.id}`}
+                  className={isDone ? "done" : ""}
+                  aria-current={item.id === lesson.id ? "page" : undefined}
+                >
+                  <Icon strokeWidth={1.75} />
+                  <span>{pick(item, "title")}</span>
+                  <span className="caption num">{item.minutes}′</span>
+                </Link>
+              );
+            })}
+          </nav>
         </div>
       </div>
     </div>

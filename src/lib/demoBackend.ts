@@ -1,6 +1,7 @@
 // Demo mode: the whole school in the browser's localStorage, used when
 // Supabase keys aren't configured. Mirrors the rules the database enforces.
 import { seedCourses, seedPaymentSettings, seedPlans } from "../data/seed";
+import { elementaryA2Course } from "../data/elementaryA2";
 import { signupPasswordIsValid } from "./password";
 import type { Backend } from "./backend";
 import type {
@@ -38,7 +39,7 @@ type DB = {
 
 const DB_KEY = "ec-demo-db";
 const SESSION_KEY = "ec-demo-session";
-const VERSION = 6;
+const VERSION = 7;
 export const DEMO_ADMIN_ID = "demo-admin";
 export const DEMO_STUDENT_ID = "demo-student";
 
@@ -152,6 +153,18 @@ function load(): DB {
         parsed.tasks.push(...fresh.tasks.filter((task) => ids.has(task.lesson_id)));
         const planId = seedPlans[0].id;
         parsed.plans = parsed.plans.map((plan) => plan.id === planId ? { ...plan, price: 7700 } : plan);
+        parsed.version = 6;
+      }
+      if (parsed.version === 6) {
+        const { lessons, ...course } = clone(elementaryA2Course);
+        if (!parsed.courses.some((existing) => existing.id === course.id || existing.slug === course.slug)) {
+          parsed.courses.push(course);
+          for (const { materials, tasks, ...lesson } of lessons) {
+            parsed.lessons.push(lesson);
+            parsed.materials.push(materials);
+            parsed.tasks.push(...tasks);
+          }
+        }
         parsed.version = VERSION;
         localStorage.setItem(DB_KEY, JSON.stringify(parsed));
         return parsed;

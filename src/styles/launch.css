@@ -93,7 +93,7 @@
 .launch-method-copy h3 { font-size: 1rem; font-weight: 850; margin-bottom: 3px; }
 .launch-method-copy li p { color: var(--launch-muted); }
 .launch-trials { padding-bottom: clamp(42px, 7vw, 80px); }
-.launch-trial-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
+.launch-trial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 20px; }
 .launch-trial { display: grid; overflow: hidden; border: 1px solid #e7dff1; border-radius: 17px; background: #fff; }
 .launch-trial img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: #eee7ff; }
 .launch-trial-caption { display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 9px; padding: 14px; }

@@ -1219,4 +1219,955 @@ Instead of **You forgot** — **Just a quick reminder about…**
 Instead of **No** — **Unfortunately, I won''t be able to… Would Thursday work instead?**') on conflict do nothing;
 insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Фразы для писем', 'Хаттарға арналған тіркестер', 'Email phrases', '', '', '', '{"words":[{"term":"Could you…?","ru":"Не могли бы вы…?","kk":"…бере аласыз ба?","example":"Could you share the slides?"},{"term":"Just a quick reminder","ru":"Небольшое напоминание","kk":"Қысқаша еске салу","example":"Just a quick reminder about tomorrow''s call."},{"term":"Unfortunately","ru":"К сожалению","kk":"Өкінішке қарай","example":"Unfortunately, I can''t join the meeting."},{"term":"Would … work for you?","ru":"Вам подойдёт…?","kk":"…сізге ыңғайлы ма?","example":"Would 3 p.m. work for you?"}]}'::jsonb, '00000000-0000-4000-8000-000000040101', '00000000-0000-4000-8000-000000000401', 1) on conflict do nothing;
 insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('writing', 'Напишите письмо', 'Хат жазыңыз', 'Write an email', 'Your manager asked for a report by Monday, but you need two more days. Write a polite email (60–90 words).', 'Your manager asked for a report by Monday, but you need two more days. Write a polite email (60–90 words).', 'Your manager asked for a report by Monday, but you need two more days. Write a polite email (60–90 words).', '{"min_words":60,"max_words":90,"checklist":["I explained the reason briefly.","I suggested a new deadline.","I used polite phrases from the lesson."]}'::jsonb, '00000000-0000-4000-8000-000000040102', '00000000-0000-4000-8000-000000000401', 2) on conflict do nothing;
+
+-- Elementary English · A2
+insert into public.courses (id, slug, title, title_kk, title_en, subtitle, subtitle_kk, subtitle_en, description, description_kk, description_en, level, category, glyph, cover_url, is_published, sort) values ('00000000-0000-4000-8000-000000000500', 'elementary-a2', 'Elementary English', 'Elementary English', 'Elementary English', 'Английский для повседневных ситуаций · Разделы 1–6', 'Күнделікті өмірге арналған ағылшын тілі · 1–6-бөлім', 'English for everyday situations · Units 1–6', 'Научитесь знакомиться, рассказывать о привычках, общаться на работе и учёбе, спрашивать дорогу, рассказывать о поездках и заказывать еду. В каждом разделе есть разговорная практика и итоговое задание.', 'Танысуды, күн тәртібі туралы айтуды, жұмыс пен оқу жайлы сөйлесуді, жол сұрауды, сапарды әңгімелеуді және тағамға тапсырыс беруді үйренесіз. Әр бөлімде айтылым жаттығуы мен қорытынды тапсырма бар.', 'Introduce yourself, describe your routines, talk about work and study, ask for directions, tell travel stories, and order food. Each unit includes speaking practice and a checkpoint.', 'A2', 'general', 'general', '/images/english-city/elementary-a2.webp', true, 25) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003001', '00000000-0000-4000-8000-000000000500', 1, 25, '1.1 Первое знакомство', '1.1 Алғашқы танысу', '1.1 The first hello', 'Представьтесь и спросите, откуда ваш собеседник.', 'Өзіңізді таныстырып, басқа адамның қайдан екенін сұраңыз.', 'Introduce yourself and ask where another person is from.', true, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003001', '', '## Прочитайте пример
+
+- Dana: Hi, I’m Dana. Are you here for the photography class?
+- Leo: Yes, I am. I’m Leo. I’m from Toronto. Are you from Almaty?
+- Dana: No, I’m not. I’m from Kokshetau, but I live here now.
+
+## Языковая подсказка
+
+С I используйте am, с you — are, с she и he — is. В вопросе поставьте форму be перед подлежащим. Страну называют после from, а национальность выражают прилагательным: I’m from Kazakhstan. I’m Kazakhstani.
+
+## Попробуйте сами
+
+Представьте, что вы пришли на занятие выходного дня. Назовите имя и город, скажите что-нибудь о занятии и спросите собеседника, откуда он.', '## Үлгіні оқыңыз
+
+- Dana: Hi, I’m Dana. Are you here for the photography class?
+- Leo: Yes, I am. I’m Leo. I’m from Toronto. Are you from Almaty?
+- Dana: No, I’m not. I’m from Kokshetau, but I live here now.
+
+## Қолданатын тілдік үлгі
+
+I есімдігімен am, you есімдігімен are, she және he есімдіктерімен is қолданылады. Сұрақта am, are немесе is бастауыштың алдына шығады. Қайдан екеніңізді from + жер атауы арқылы айтыңыз: I’m from Kazakhstan. I’m Kazakhstani.
+
+## Өзіңіз қолданып көріңіз
+
+Демалыс күнгі сабаққа келдіңіз деп елестетіңіз. Атыңызды, қалаңызды және сабақ туралы бір ойыңызды айтыңыз. Серігіңізден қайдан екенін сұраңыз.', '## Read the example
+
+- Dana: Hi, I’m Dana. Are you here for the photography class?
+- Leo: Yes, I am. I’m Leo. I’m from Toronto. Are you from Almaty?
+- Dana: No, I’m not. I’m from Kokshetau, but I live here now.
+
+## Language to use
+
+Use I am, you are and she/he is. Put am, are or is before the subject in a question. To say where someone is from, use from + place; to name nationality, use an adjective: I’m from Kazakhstan. I’m Kazakhstani.
+
+## Try it yourself
+
+Imagine you arrive at a weekend class. Say your name, your city and one thing about the class. Ask your partner where they’re from.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"classmate","kk":"топтас","ru":"одногруппник","example":"Leo is my new classmate."},{"term":"city","kk":"қала","ru":"город","example":"Toronto is a city."},{"term":"country","kk":"ел","ru":"страна","example":"Canada is a country."},{"term":"Canadian","kk":"канадалық","ru":"канадский; канадец","example":"Leo is Canadian."}]}'::jsonb, '00000000-0000-4000-8000-000000300011', '00000000-0000-4000-8000-000000003001', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"Hi, I’m Dana. Nice to meet you."},{"text":"I’m from Kokshetau, but I live in Almaty."},{"text":"Where are you from?"}]}'::jsonb, '00000000-0000-4000-8000-000000300012', '00000000-0000-4000-8000-000000003001', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"I ___ from Kokshetau.","options":["are","am","is"],"correct":1},{"question":"___ Leo from Canada?","options":["Is","Am","Are"],"correct":0},{"question":"Dana is from ___ in the dialogue.","options":["Toronto","Almaty","Kokshetau"],"correct":2}]}'::jsonb, '00000000-0000-4000-8000-000000300013', '00000000-0000-4000-8000-000000003001', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003002', '00000000-0000-4000-8000-000000000500', 2, 25, '1.2 Моя семья', '1.2 Менің отбасым', '1.2 The people in my family', 'Расскажите о родственных связях с помощью my, your, her и ’s.', 'My, your, her және ’s арқылы туыстық байланысты түсіндіріңіз.', 'Explain family relationships using my, your, her and ’s.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003002', '', '## Прочитайте пример
+
+- Ali is my cousin. His mother is my aunt.
+- This is Ali’s sister, Sara. Her son is five.
+- Our grandparents live near the river.
+
+## Языковая подсказка
+
+Местоимения my, your, his, her, our и their ставятся перед существительным. Добавьте ’s к имени одного человека: Ali’s aunt. Her указывает на обладательницу, а не на род следующего слова.
+
+## Попробуйте сами
+
+Запишите три имени и объясните, кем каждый человек приходится вам или другому человеку на схеме.', '## Үлгіні оқыңыз
+
+- Ali is my cousin. His mother is my aunt.
+- This is Ali’s sister, Sara. Her son is five.
+- Our grandparents live near the river.
+
+## Қолданатын тілдік үлгі
+
+My, your, his, her, our немесе their сөзін зат есімнің алдына қойыңыз. Бір адамның атына ’s қосып, туыстық байланысты білдіріңіз: Ali’s aunt. Her өзінен кейінгі заттың емес, иесінің кім екенін көрсетеді.
+
+## Өзіңіз қолданып көріңіз
+
+Үш адамның атын жазыңыз. Әрқайсысының сізге немесе сызбадағы басқа адамға кім болатынын айтыңыз.', '## Read the example
+
+- Ali is my cousin. His mother is my aunt.
+- This is Ali’s sister, Sara. Her son is five.
+- Our grandparents live near the river.
+
+## Language to use
+
+Put my, your, his, her, our or their before a noun. Add ’s to one person’s name to show a relationship: Ali’s aunt. Her describes something belonging to a woman or girl, not the gender of the noun that follows.
+
+## Try it yourself
+
+Draw three names. Explain how each person is related to you or to someone else in the diagram.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"aunt","kk":"тәте","ru":"тётя","example":"My aunt lives nearby."},{"term":"cousin","kk":"немере туыс","ru":"двоюродный брат или сестра","example":"Ali is my cousin."},{"term":"grandparents","kk":"ата мен әже","ru":"бабушка и дедушка","example":"Our grandparents live near the river."},{"term":"son","kk":"ұл","ru":"сын","example":"Sara’s son is five."}]}'::jsonb, '00000000-0000-4000-8000-000000300021', '00000000-0000-4000-8000-000000003002', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"This is my cousin Ali."},{"text":"Ali’s mother is my aunt."},{"text":"Our grandparents live near the river."}]}'::jsonb, '00000000-0000-4000-8000-000000300022', '00000000-0000-4000-8000-000000003002', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"Sara is Ali’s sister. ___ son is five.","options":["His","Their","Her"],"correct":2},{"question":"Who is Sara in the example?","options":["Ali’s aunt","Ali’s sister","Ali’s mother"],"correct":1},{"question":"Which phrase means the mother of Ali?","options":["Ali’s mother","Alis mother","Ali is mother"],"correct":0}]}'::jsonb, '00000000-0000-4000-8000-000000300023', '00000000-0000-4000-8000-000000003002', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003003', '00000000-0000-4000-8000-000000000500', 3, 25, '1.3 Внешность человека', '1.3 Адамның сырт келбеті', '1.3 A face in the crowd', 'Опишите внешность человека и сформулируйте вежливую просьбу.', 'Адамның сырт келбетін сипаттап, сыпайы өтініш айтыңыз.', 'Describe someone’s appearance and make a polite request.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003003', '', '## Прочитайте пример
+
+- Mira is tall and has curly hair. She wears round glasses.
+- Mira: Can I have a glass of water, please?
+- Host: Of course. Here you are.
+
+## Языковая подсказка
+
+С he и she используйте has, с I, you и they — have. Рост и возраст описывают с be, волосы и другие черты — с have: She is tall. She has curly hair. Для вежливой просьбы используйте Can I have …?
+
+## Попробуйте сами
+
+Опишите вымышленного человека, которого должен встретить ваш друг. Добавьте вежливую просьбу, которую можно произнести во время ожидания.', '## Үлгіні оқыңыз
+
+- Mira is tall and has curly hair. She wears round glasses.
+- Mira: Can I have a glass of water, please?
+- Host: Of course. Here you are.
+
+## Қолданатын тілдік үлгі
+
+He және she есімдіктерімен has, I, you және they есімдіктерімен have қолданылады. Бой мен жасты be арқылы, сыртқы белгілерді have арқылы айтыңыз: She is tall. She has curly hair. Бір нәрсе сұрау үшін Can I have …? деуге болады.
+
+## Өзіңіз қолданып көріңіз
+
+Досыңыз кездестіруге тиіс ойдан шығарылған адамды сипаттаңыз. Күтіп тұрған кезде айтуға болатын бір сыпайы өтініш қосыңыз.', '## Read the example
+
+- Mira is tall and has curly hair. She wears round glasses.
+- Mira: Can I have a glass of water, please?
+- Host: Of course. Here you are.
+
+## Language to use
+
+Use has with he or she. Use have with I, you and they. Use be for height or age: She is tall. Use have for features: She has curly hair. Can I have …? is a polite way to ask for something.
+
+## Try it yourself
+
+Describe a fictional person for a friend who must meet them. Add one polite request you could make while waiting.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"curly","kk":"бұйра","ru":"кудрявый","example":"Mira has curly hair."},{"term":"straight","kk":"тік","ru":"прямой","example":"I have straight hair."},{"term":"glasses","kk":"көзілдірік","ru":"очки","example":"She wears glasses."},{"term":"tall","kk":"бойы ұзын","ru":"высокий","example":"Mira is tall."}]}'::jsonb, '00000000-0000-4000-8000-000000300031', '00000000-0000-4000-8000-000000003003', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"She has curly hair and round glasses."},{"text":"Can I have a glass of water, please?"}]}'::jsonb, '00000000-0000-4000-8000-000000300032', '00000000-0000-4000-8000-000000003003', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"Mira ___ curly hair.","options":["is","have","has"],"correct":2},{"question":"Which request is polite?","options":["Can I have some water, please?","I water please.","Have me water."],"correct":0},{"question":"Mira ___ tall.","options":["has","is","have"],"correct":1}]}'::jsonb, '00000000-0000-4000-8000-000000300033', '00000000-0000-4000-8000-000000003003', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003004', '00000000-0000-4000-8000-000000000500', 4, 30, '1.4 Повторение и практика', '1.4 Қайталау және қолдану', '1.4 Review and use it', 'Представьтесь, опишите знакомого человека и напишите дружеское письмо.', 'Өзіңізді таныстырып, таныс адамды сипаттаңыз және досыңызға хат жазыңыз.', 'Introduce yourself, describe someone you know, and write a friendly email.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003004', '', '## Языковая подсказка
+
+- С I используйте am, с you — are, с she и he — is. В вопросе поставьте форму be перед подлежащим. Страну называют после from, а национальность выражают прилагательным: I’m from Kazakhstan. I’m Kazakhstani.
+- Местоимения my, your, his, her, our и their ставятся перед существительным. Добавьте ’s к имени одного человека: Ali’s aunt. Her указывает на обладательницу, а не на род следующего слова.
+- С he и she используйте has, с I, you и they — have. Рост и возраст описывают с be, волосы и другие черты — с have: She is tall. She has curly hair. Для вежливой просьбы используйте Can I have …?
+
+## Прочитайте пример
+
+Hi Mina, I’m from Semey, but I live in Almaty now. My sister Aida has short hair, and she always wears glasses. Do you have any brothers or sisters? See you on Monday, Daniyar.
+
+## Попробуйте сами
+
+Напишите письмо новому одногруппнику. Скажите, откуда вы, опишите родственника и задайте один вопрос. Свяжите две мысли с помощью and или but.', '## Қолданатын тілдік үлгі
+
+- I есімдігімен am, you есімдігімен are, she және he есімдіктерімен is қолданылады. Сұрақта am, are немесе is бастауыштың алдына шығады. Қайдан екеніңізді from + жер атауы арқылы айтыңыз: I’m from Kazakhstan. I’m Kazakhstani.
+- My, your, his, her, our немесе their сөзін зат есімнің алдына қойыңыз. Бір адамның атына ’s қосып, туыстық байланысты білдіріңіз: Ali’s aunt. Her өзінен кейінгі заттың емес, иесінің кім екенін көрсетеді.
+- He және she есімдіктерімен has, I, you және they есімдіктерімен have қолданылады. Бой мен жасты be арқылы, сыртқы белгілерді have арқылы айтыңыз: She is tall. She has curly hair. Бір нәрсе сұрау үшін Can I have …? деуге болады.
+
+## Үлгіні оқыңыз
+
+Hi Mina, I’m from Semey, but I live in Almaty now. My sister Aida has short hair, and she always wears glasses. Do you have any brothers or sisters? See you on Monday, Daniyar.
+
+## Өзіңіз қолданып көріңіз
+
+Жаңа топтасыңызға хат жазыңыз. Қайдан екеніңізді айтыңыз, отбасыңыздағы бір адамды сипаттаңыз және бір сұрақ қойыңыз. Екі ойды and немесе but арқылы байланыстырыңыз.', '## Language to use
+
+- Use I am, you are and she/he is. Put am, are or is before the subject in a question. To say where someone is from, use from + place; to name nationality, use an adjective: I’m from Kazakhstan. I’m Kazakhstani.
+- Put my, your, his, her, our or their before a noun. Add ’s to one person’s name to show a relationship: Ali’s aunt. Her describes something belonging to a woman or girl, not the gender of the noun that follows.
+- Use has with he or she. Use have with I, you and they. Use be for height or age: She is tall. Use have for features: She has curly hair. Can I have …? is a polite way to ask for something.
+
+## Read the example
+
+Hi Mina, I’m from Semey, but I live in Almaty now. My sister Aida has short hair, and she always wears glasses. Do you have any brothers or sisters? See you on Monday, Daniyar.
+
+## Try it yourself
+
+Write an email to a new classmate. Say where you’re from, describe someone in your family, and ask one question. Connect two ideas with and or but.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Тест по разделу', 'Бөлім бойынша тест', 'Unit check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"My name ___ Anel.","options":["is","am","are"],"correct":0},{"question":"___ you from Aktobe?","options":["Am","Are","Is"],"correct":1},{"question":"I live in Astana now, ___ my family lives in Taraz.","options":["or","am","but"],"correct":2},{"question":"This is Aida. ___ father is a teacher.","options":["His","Her","Their"],"correct":1},{"question":"They ___ short hair.","options":["have","is","has"],"correct":0}]}'::jsonb, '00000000-0000-4000-8000-000000300041', '00000000-0000-4000-8000-000000003004', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('writing', 'Письменное задание', 'Жазып көріңіз', 'Put it into writing', 'Напишите письмо новому одногруппнику. Скажите, откуда вы, опишите родственника и задайте один вопрос. Свяжите две мысли с помощью and или but.', 'Жаңа топтасыңызға хат жазыңыз. Қайдан екеніңізді айтыңыз, отбасыңыздағы бір адамды сипаттаңыз және бір сұрақ қойыңыз. Екі ойды and немесе but арқылы байланыстырыңыз.', 'Write an email to a new classmate. Say where you’re from, describe someone in your family, and ask one question. Connect two ideas with and or but.', '{"min_words":20,"max_words":60,"checklist":["Say where you’re from.","Describe a person using have or has.","Ask one question."]}'::jsonb, '00000000-0000-4000-8000-000000300042', '00000000-0000-4000-8000-000000003004', 2) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003005', '00000000-0000-4000-8000-000000000500', 5, 25, '2.1 Пока город спит', '2.1 Таңғы күн тәртібі', '2.1 Before the city wakes up', 'Опишите повседневные привычки в простом настоящем времени.', 'Күнделікті әдеттерді осы шақта сипаттаңыз.', 'Describe everyday routines in the simple present.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003005', '', '## Прочитайте пример
+
+- I wake up at seven and make coffee.
+- My brother starts work at six. He doesn’t have breakfast at home.
+- He takes the first bus. I walk to class.
+
+## Языковая подсказка
+
+В утверждениях с he, she или it добавляйте -s или -es к глаголу. После doesn’t используйте начальную форму. С I, you, we и they употребляется don’t.
+
+## Попробуйте сами
+
+Опишите своё утро и утро друга в трёх предложениях. Назовите по одному действию, которое каждый из вас не делает.', '## Үлгіні оқыңыз
+
+- I wake up at seven and make coffee.
+- My brother starts work at six. He doesn’t have breakfast at home.
+- He takes the first bus. I walk to class.
+
+## Қолданатын тілдік үлгі
+
+Болымды сөйлемде he, she немесе it есімдігінен кейін етістікке -s не -es қосылады. Болымсыз түрде doesn’t-тен кейін етістік бастапқы қалпында тұрады. I, you, we, they есімдіктерімен don’t қолданылады.
+
+## Өзіңіз қолданып көріңіз
+
+Өз таңыңыз бен досыңыздың таңын үш сөйлеммен сипаттаңыз. Әрқайсыңыз істемейтін бір әрекетті қосыңыз.', '## Read the example
+
+- I wake up at seven and make coffee.
+- My brother starts work at six. He doesn’t have breakfast at home.
+- He takes the first bus. I walk to class.
+
+## Language to use
+
+In positive sentences, add -s or -es with he, she or it. Use doesn’t + the base verb for a negative: He doesn’t take the bus. Use don’t with I, you, we and they.
+
+## Try it yourself
+
+Describe your morning and a friend’s morning in three sentences. Include one thing each of you doesn’t do.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"wake up","kk":"ояну","ru":"просыпаться","example":"I wake up at seven."},{"term":"start work","kk":"жұмысты бастау","ru":"начинать работу","example":"He starts work at six."},{"term":"have breakfast","kk":"таңғы ас ішу","ru":"завтракать","example":"We have breakfast at home."},{"term":"take the bus","kk":"автобуспен бару","ru":"ехать на автобусе","example":"She takes the bus."}]}'::jsonb, '00000000-0000-4000-8000-000000300051', '00000000-0000-4000-8000-000000003005', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"I wake up at seven."},{"text":"My brother starts work at six."},{"text":"He doesn’t have breakfast at home."}]}'::jsonb, '00000000-0000-4000-8000-000000300052', '00000000-0000-4000-8000-000000003005', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"My cousin ___ work at nine.","options":["start","starts","starting"],"correct":1},{"question":"He doesn’t ___ the train.","options":["takes","taking","take"],"correct":2},{"question":"Who walks to class in the example?","options":["The speaker","The brother","Both people"],"correct":0}]}'::jsonb, '00000000-0000-4000-8000-000000300053', '00000000-0000-4000-8000-000000003005', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003006', '00000000-0000-4000-8000-000000000500', 6, 25, '2.2 Как часто вы ходите?', '2.2 Қаншалықты жиі?', '2.2 How often do you go?', 'Скажите, когда и как часто вы что-то делаете.', 'Істің қашан және қаншалықты жиі болатынын айтыңыз.', 'Say when and how often you do things.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003006', '', '## Прочитайте пример
+
+- I usually swim on Tuesdays at seven.
+- I’m often tired in the evening, so I sometimes read instead.
+
+## Языковая подсказка
+
+Слова частотности обычно стоят перед смысловым глаголом, но после be. С точным временем используйте at, с днями — on, с частями дня — in.
+
+## Попробуйте сами
+
+Назовите время двух занятий, затем скажите, как часто вы ими занимаетесь.', '## Үлгіні оқыңыз
+
+- I usually swim on Tuesdays at seven.
+- I’m often tired in the evening, so I sometimes read instead.
+
+## Қолданатын тілдік үлгі
+
+Жиілікті білдіретін сөздер әдетте негізгі етістіктің алдында, ал be етістігінен кейін тұрады. Сағатпен at, апта күнімен on, күннің мезгілімен in қолданылады.
+
+## Өзіңіз қолданып көріңіз
+
+Екі істің уақытын айтып, әрқайсысын қаншалықты жиі істейтініңізді түсіндіріңіз.', '## Read the example
+
+- I usually swim on Tuesdays at seven.
+- I’m often tired in the evening, so I sometimes read instead.
+
+## Language to use
+
+Frequency words normally go before an action verb: I usually walk. With be they normally come after it: I’m often busy. Use at for a clock time, on for days and in for parts of the day.
+
+## Try it yourself
+
+Say the time of two activities, then explain how often you do each one.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"usually","kk":"әдетте","ru":"обычно","example":"I usually swim on Tuesdays."},{"term":"sometimes","kk":"кейде","ru":"иногда","example":"She sometimes reads on the bus."},{"term":"never","kk":"ешқашан","ru":"никогда","example":"We never work on Sundays."},{"term":"in the evening","kk":"кешке","ru":"вечером","example":"I read in the evening."}]}'::jsonb, '00000000-0000-4000-8000-000000300061', '00000000-0000-4000-8000-000000003006', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"I usually swim on Tuesdays."},{"text":"I’m often tired in the evening."}]}'::jsonb, '00000000-0000-4000-8000-000000300062', '00000000-0000-4000-8000-000000003006', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"The lesson starts ___ six.","options":["on","in","at"],"correct":2},{"question":"Choose the usual word order.","options":["I am often busy.","I often am busy every.","I busy often am."],"correct":0},{"question":"We usually play ___ Fridays.","options":["at","on","in"],"correct":1}]}'::jsonb, '00000000-0000-4000-8000-000000300063', '00000000-0000-4000-8000-000000003006', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003007', '00000000-0000-4000-8000-000000000500', 7, 25, '2.3 Планы на субботу', '2.3 Сенбіге жоспар құру', '2.3 Make a Saturday plan', 'Расскажите о своих предпочтениях и ответьте на предложение.', 'Ұнайтын істер туралы айтып, ұсынысқа жауап беріңіз.', 'Talk about likes and respond to suggestions.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003007', '', '## Прочитайте пример
+
+- Nuri: I like outdoor movies. Let’s go to the park on Saturday.
+- Dana: Good idea. How about meeting at six?
+- Nuri: Perfect. We can get tea first.
+
+## Языковая подсказка
+
+Говорите о предпочтениях с like + существительное или like + глагол на -ing. Предложение можно начать с Let’s + глагол или How about + -ing? Good idea! выражает согласие.
+
+## Попробуйте сами
+
+Предложите два занятия. Объясните, какое нравится больше, и договоритесь о времени.', '## Үлгіні оқыңыз
+
+- Nuri: I like outdoor movies. Let’s go to the park on Saturday.
+- Dana: Good idea. How about meeting at six?
+- Nuri: Perfect. We can get tea first.
+
+## Қолданатын тілдік үлгі
+
+Ұнайтын іс туралы like + зат есім немесе like + -ing арқылы айтыңыз. Ұсыныс үшін Let’s + етістік немесе How about + -ing? үлгісін қолданыңыз. Good idea! келісуді білдіреді.
+
+## Өзіңіз қолданып көріңіз
+
+Екі іс ұсыныңыз. Біреуін неге таңдайтыныңызды айтып, уақытты келісіңіз.', '## Read the example
+
+- Nuri: I like outdoor movies. Let’s go to the park on Saturday.
+- Dana: Good idea. How about meeting at six?
+- Nuri: Perfect. We can get tea first.
+
+## Language to use
+
+Use like + noun or like + verb-ing to talk about what you enjoy. Use Let’s + base verb or How about + -ing? to make a suggestion. Good idea! accepts it; How about Monday instead? offers a change.
+
+## Try it yourself
+
+Suggest two activities. Say why you prefer one and agree on a time.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"outdoor movie","kk":"ашық аспан астындағы кино","ru":"кино под открытым небом","example":"There’s an outdoor movie on Saturday."},{"term":"instead","kk":"оның орнына","ru":"вместо этого","example":"Let’s meet at six instead."},{"term":"plan","kk":"жоспар","ru":"план","example":"We have a plan for Saturday."},{"term":"good idea","kk":"жақсы ой","ru":"хорошая идея","example":"A trip to the park is a good idea."}]}'::jsonb, '00000000-0000-4000-8000-000000300071', '00000000-0000-4000-8000-000000003007', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"Let’s go to the park on Saturday."},{"text":"How about meeting at six?"}]}'::jsonb, '00000000-0000-4000-8000-000000300072', '00000000-0000-4000-8000-000000003007', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"How about ___ at six?","options":["meet","meeting","meets"],"correct":1},{"question":"Choose the suggestion.","options":["I like films.","The park is open.","Let’s go to the park."],"correct":2},{"question":"Which answer accepts a suggestion?","options":["Good idea!","Last Friday.","No, I am not."],"correct":0}]}'::jsonb, '00000000-0000-4000-8000-000000300073', '00000000-0000-4000-8000-000000003007', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003008', '00000000-0000-4000-8000-000000000500', 8, 30, '2.4 Повторение и практика', '2.4 Қайталау және қолдану', '2.4 Review and use it', 'Опишите распорядок дня и предложите план.', 'Күн тәртібін сипаттап, жоспар ұсыныңыз.', 'Describe a routine and suggest a plan.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003008', '', '## Языковая подсказка
+
+- В утверждениях с he, she или it добавляйте -s или -es к глаголу. После doesn’t используйте начальную форму. С I, you, we и they употребляется don’t.
+- Слова частотности обычно стоят перед смысловым глаголом, но после be. С точным временем используйте at, с днями — on, с частями дня — in.
+- Говорите о предпочтениях с like + существительное или like + глагол на -ing. Предложение можно начать с Let’s + глагол или How about + -ing? Good idea! выражает согласие.
+
+## Прочитайте пример
+
+First, I have breakfast with my family at nine. Next, I meet a friend in the park. I like taking photos, but I don’t like shopping. Finally, I cook dinner at home.
+
+## Попробуйте сами
+
+Напишите короткий пост об идеальной субботе. Расскажите, что вы делаете сначала, затем и в конце. Добавьте любимое и нелюбимое занятие.', '## Қолданатын тілдік үлгі
+
+- Болымды сөйлемде he, she немесе it есімдігінен кейін етістікке -s не -es қосылады. Болымсыз түрде doesn’t-тен кейін етістік бастапқы қалпында тұрады. I, you, we, they есімдіктерімен don’t қолданылады.
+- Жиілікті білдіретін сөздер әдетте негізгі етістіктің алдында, ал be етістігінен кейін тұрады. Сағатпен at, апта күнімен on, күннің мезгілімен in қолданылады.
+- Ұнайтын іс туралы like + зат есім немесе like + -ing арқылы айтыңыз. Ұсыныс үшін Let’s + етістік немесе How about + -ing? үлгісін қолданыңыз. Good idea! келісуді білдіреді.
+
+## Үлгіні оқыңыз
+
+First, I have breakfast with my family at nine. Next, I meet a friend in the park. I like taking photos, but I don’t like shopping. Finally, I cook dinner at home.
+
+## Өзіңіз қолданып көріңіз
+
+Өзіңізге ұнайтын сенбі туралы қысқа блог жазбасын жазыңыз. Алдымен, одан кейін және соңында не істейтініңізді айтыңыз. Бір ұнайтын және бір ұнамайтын істі қосыңыз.', '## Language to use
+
+- In positive sentences, add -s or -es with he, she or it. Use doesn’t + the base verb for a negative: He doesn’t take the bus. Use don’t with I, you, we and they.
+- Frequency words normally go before an action verb: I usually walk. With be they normally come after it: I’m often busy. Use at for a clock time, on for days and in for parts of the day.
+- Use like + noun or like + verb-ing to talk about what you enjoy. Use Let’s + base verb or How about + -ing? to make a suggestion. Good idea! accepts it; How about Monday instead? offers a change.
+
+## Read the example
+
+First, I have breakfast with my family at nine. Next, I meet a friend in the park. I like taking photos, but I don’t like shopping. Finally, I cook dinner at home.
+
+## Try it yourself
+
+Write a short blog post about your ideal Saturday. Tell us what you do first, next and finally. Add one activity you like and one you don’t like.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Тест по разделу', 'Бөлім бойынша тест', 'Unit check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"On weekdays she ___ lunch at noon.","options":["have","has","having"],"correct":1},{"question":"They ___ work on Sundays.","options":["doesn’t","aren’t","don’t"],"correct":2},{"question":"I usually have tea ___ the morning.","options":["in","on","at"],"correct":0},{"question":"What comes after First in a sequence?","options":["Never","Next","At six"],"correct":1},{"question":"Let’s ___ for a walk.","options":["going","goes","go"],"correct":2}]}'::jsonb, '00000000-0000-4000-8000-000000300081', '00000000-0000-4000-8000-000000003008', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('writing', 'Письменное задание', 'Жазып көріңіз', 'Put it into writing', 'Напишите короткий пост об идеальной субботе. Расскажите, что вы делаете сначала, затем и в конце. Добавьте любимое и нелюбимое занятие.', 'Өзіңізге ұнайтын сенбі туралы қысқа блог жазбасын жазыңыз. Алдымен, одан кейін және соңында не істейтініңізді айтыңыз. Бір ұнайтын және бір ұнамайтын істі қосыңыз.', 'Write a short blog post about your ideal Saturday. Tell us what you do first, next and finally. Add one activity you like and one you don’t like.', '{"min_words":20,"max_words":60,"checklist":["Use first, next and finally.","Include one time.","Use like and don’t like."]}'::jsonb, '00000000-0000-4000-8000-000000300082', '00000000-0000-4000-8000-000000003008', 2) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003009', '00000000-0000-4000-8000-000000000500', 9, 25, '3.1 Вопросы о работе', '3.1 Жұмыс туралы сұрау', '3.1 Ask about a job', 'Задавайте вопросы о работе с ответом «да» или «нет» в простом настоящем времени.', 'Жұмыс туралы осы шақта «иә» не «жоқ» деп жауап берілетін сұрақтар қойыңыз.', 'Ask and answer simple present yes/no questions about jobs.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003009', '', '## Прочитайте пример
+
+- Do you work in a hospital? — No, I don’t.
+- Do you use a camera at work? — Yes, I do.
+- Does your sister work with you? — No, she doesn’t.
+
+## Языковая подсказка
+
+Начинайте вопрос с do для I, you, we, they и с does для he, she, it. Основной глагол остаётся в начальной форме. Краткий ответ: Yes, I do или No, she doesn’t.
+
+## Попробуйте сами
+
+Выберите профессию и составьте три общих вопроса, по которым её можно угадать.', '## Үлгіні оқыңыз
+
+- Do you work in a hospital? — No, I don’t.
+- Do you use a camera at work? — Yes, I do.
+- Does your sister work with you? — No, she doesn’t.
+
+## Қолданатын тілдік үлгі
+
+I, you, we, they есімдіктерімен сұрақты do, ал he, she, it есімдіктерімен does сөзінен бастаңыз. Негізгі етістік бастапқы қалпында қалады. Қысқа жауап: Yes, I do немесе No, she doesn’t.
+
+## Өзіңіз қолданып көріңіз
+
+Мамандық таңдаңыз. Біреу оны таба алуы үшін «иә» не «жоқ» деп жауап берілетін үш сұрақ құрастырыңыз.', '## Read the example
+
+- Do you work in a hospital? — No, I don’t.
+- Do you use a camera at work? — Yes, I do.
+- Does your sister work with you? — No, she doesn’t.
+
+## Language to use
+
+Start yes/no questions with do for I, you, we or they, and does for he, she or it. Keep the main verb in its base form. Answer with Yes, I do or No, she doesn’t.
+
+## Try it yourself
+
+Choose a job and write three yes/no questions that would help someone guess it.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"photographer","kk":"фотограф","ru":"фотограф","example":"A photographer uses a camera."},{"term":"receptionist","kk":"қабылдау бөлімінің қызметкері","ru":"администратор на стойке","example":"The receptionist answers calls."},{"term":"coworker","kk":"әріптес","ru":"коллега","example":"My coworker starts at nine."},{"term":"office","kk":"кеңсе","ru":"офис","example":"I work in an office."}]}'::jsonb, '00000000-0000-4000-8000-000000300091', '00000000-0000-4000-8000-000000003009', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"Do you work in a hospital?"},{"text":"Does your sister work with you?"}]}'::jsonb, '00000000-0000-4000-8000-000000300092', '00000000-0000-4000-8000-000000003009', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"___ your brother work in an office?","options":["Do","Does","Is"],"correct":1},{"question":"Does she answer calls? — Yes, she ___.","options":["do","is","does"],"correct":2},{"question":"Which question is correct?","options":["Does he use a camera?","Does he uses a camera?","Do he uses a camera?"],"correct":0}]}'::jsonb, '00000000-0000-4000-8000-000000300093', '00000000-0000-4000-8000-000000003009', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003010', '00000000-0000-4000-8000-000000000500', 10, 25, '3.2 Что нужно делать?', '3.2 Не істеу міндетті?', '3.2 What is required?', 'Различайте обязательные и необязательные действия на работе или учёбе.', 'Жұмыстағы не оқудағы міндет пен таңдауды ажыратыңыз.', 'Separate requirements from choices at work or school.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003010', '', '## Прочитайте пример
+
+- On my first day, I have to arrive by nine.
+- I don’t have to wear a uniform. Our trainer has to check each computer before class.
+
+## Языковая подсказка
+
+Have to и has to обозначают необходимость. Don’t have to и doesn’t have to говорят, что обязанности нет, но действие разрешено.
+
+## Попробуйте сами
+
+Запишите для нового ученика два требования и одно действие по желанию. Укажите время для каждого требования.', '## Үлгіні оқыңыз
+
+- On my first day, I have to arrive by nine.
+- I don’t have to wear a uniform. Our trainer has to check each computer before class.
+
+## Қолданатын тілдік үлгі
+
+Have to және has to әрекеттің міндетті екенін білдіреді. Don’t have to және doesn’t have to әрекеттің міндетті емес екенін білдіреді. Бұл әрекетке тыйым салынғанын білдірмейді.
+
+## Өзіңіз қолданып көріңіз
+
+Жаңа оқушыға екі міндет пен бір еркін таңдау жазыңыз. Әр міндетке уақытын қосыңыз.', '## Read the example
+
+- On my first day, I have to arrive by nine.
+- I don’t have to wear a uniform. Our trainer has to check each computer before class.
+
+## Language to use
+
+Have to and has to mean something is required. Don’t have to and doesn’t have to mean there is no requirement. They do not mean the action is forbidden.
+
+## Try it yourself
+
+Write two requirements and one choice for a new student. Add a time expression to each requirement.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"uniform","kk":"арнайы киім","ru":"форма","example":"You don’t have to wear a uniform."},{"term":"by nine","kk":"сағат тоғыздан кешікпей","ru":"не позднее девяти","example":"Be here by nine."},{"term":"sign in","kk":"келгенін тіркеу","ru":"отметиться","example":"We sign in at the front desk."},{"term":"training","kk":"дайындық","ru":"обучение","example":"The training starts today."}]}'::jsonb, '00000000-0000-4000-8000-000000300101', '00000000-0000-4000-8000-000000003010', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"I have to arrive by nine."},{"text":"I don’t have to wear a uniform."}]}'::jsonb, '00000000-0000-4000-8000-000000300102', '00000000-0000-4000-8000-000000003010', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"The training is optional. You ___ attend.","options":["has to","don’t have to","have to"],"correct":1},{"question":"Our trainer ___ check the computers.","options":["don’t have to","have to","has to"],"correct":2},{"question":"What does arrive by nine mean?","options":["Arrive at nine or earlier.","Arrive after nine.","Arrive nine minutes late."],"correct":0}]}'::jsonb, '00000000-0000-4000-8000-000000300103', '00000000-0000-4000-8000-000000003010', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003011', '00000000-0000-4000-8000-000000000500', 11, 25, '3.3 Звонок о занятиях', '3.3 Курс туралы қоңырау', '3.3 A call about a class', 'Узнайте о курсе и оставьте телефонное сообщение.', 'Курс туралы ақпарат сұрап, телефон арқылы хабар қалдырыңыз.', 'Ask for course information and leave a phone message.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003011', '', '## Прочитайте пример
+
+- Aziz: Hello. When does the evening course start?
+- Office: It starts next Tuesday.
+- Aziz: Could I leave a message for the teacher? This is Aziz. Please call me about the class.
+
+## Языковая подсказка
+
+When спрашивает о времени, where — о месте, who — о человеке, how much — о цене. Оставьте имя, причину звонка и способ связаться с вами.
+
+## Попробуйте сами
+
+Спросите, когда начнётся занятие и где записаться. Затем оставьте преподавателю короткое сообщение.', '## Үлгіні оқыңыз
+
+- Aziz: Hello. When does the evening course start?
+- Office: It starts next Tuesday.
+- Aziz: Could I leave a message for the teacher? This is Aziz. Please call me about the class.
+
+## Қолданатын тілдік үлгі
+
+Уақытты when, орынды where, адамды who, бағаны how much арқылы сұраңыз. Хабар қалдырғанда атыңызды, қоңыраудың себебін және байланыс жолын айтыңыз.
+
+## Өзіңіз қолданып көріңіз
+
+Сабақтың қашан басталатынын және қайда тіркелуге болатынын сұраңыз. Содан кейін мұғалімге қысқа хабар қалдырыңыз.', '## Read the example
+
+- Aziz: Hello. When does the evening course start?
+- Office: It starts next Tuesday.
+- Aziz: Could I leave a message for the teacher? This is Aziz. Please call me about the class.
+
+## Language to use
+
+Use when for time, where for place, who for a person and how much for price. To leave a message, give your name, your reason for calling and a way to contact you.
+
+## Try it yourself
+
+Ask when the class starts and where to register. Then leave a short message for the teacher.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"enroll","kk":"оқуға тіркелу","ru":"записываться на курс","example":"Where do I enroll?"},{"term":"take a course","kk":"курсқа қатысу","ru":"пройти курс","example":"I want to take a course after work."},{"term":"leave a message","kk":"хабар қалдыру","ru":"оставить сообщение","example":"Can I leave a message?"},{"term":"call back","kk":"кері қоңырау шалу","ru":"перезвонить","example":"Please call me back tomorrow."}]}'::jsonb, '00000000-0000-4000-8000-000000300111', '00000000-0000-4000-8000-000000003011', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"When does the evening course start?"},{"text":"Could I leave a message for the teacher?"}]}'::jsonb, '00000000-0000-4000-8000-000000300112', '00000000-0000-4000-8000-000000003011', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"___ is the course? — It’s at the library.","options":["When","Where","How much"],"correct":1},{"question":"___ does it cost?","options":["Who","Where","How much"],"correct":2},{"question":"What should you include in a message?","options":["Your name and why you called.","Only the weather.","A list of every course."],"correct":0}]}'::jsonb, '00000000-0000-4000-8000-000000300113', '00000000-0000-4000-8000-000000003011', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003012', '00000000-0000-4000-8000-000000000500', 12, 30, '3.4 Повторение и практика', '3.4 Қайталау және қолдану', '3.4 Review and use it', 'Расспросите о работе или учёбе и оставьте понятное сообщение.', 'Жұмыс не оқу туралы сұхбаттасып, түсінікті хабар қалдырыңыз.', 'Interview someone about work or study and leave a clear message.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003012', '', '## Языковая подсказка
+
+- Начинайте вопрос с do для I, you, we, they и с does для he, she, it. Основной глагол остаётся в начальной форме. Краткий ответ: Yes, I do или No, she doesn’t.
+- Have to и has to обозначают необходимость. Don’t have to и doesn’t have to говорят, что обязанности нет, но действие разрешено.
+- When спрашивает о времени, where — о месте, who — о человеке, how much — о цене. Оставьте имя, причину звонка и способ связаться с вами.
+
+## Прочитайте пример
+
+Hi Noor! You can try the evening design class. It meets on Tuesdays. You have to bring a laptop, but you don’t have to buy any software. What time do you finish work?
+
+## Попробуйте сами
+
+Ответьте на сообщение на форуме: «Я хочу освоить новый навык после работы». Предложите курс, назовите одно требование и задайте вопрос.', '## Қолданатын тілдік үлгі
+
+- I, you, we, they есімдіктерімен сұрақты do, ал he, she, it есімдіктерімен does сөзінен бастаңыз. Негізгі етістік бастапқы қалпында қалады. Қысқа жауап: Yes, I do немесе No, she doesn’t.
+- Have to және has to әрекеттің міндетті екенін білдіреді. Don’t have to және doesn’t have to әрекеттің міндетті емес екенін білдіреді. Бұл әрекетке тыйым салынғанын білдірмейді.
+- Уақытты when, орынды where, адамды who, бағаны how much арқылы сұраңыз. Хабар қалдырғанда атыңызды, қоңыраудың себебін және байланыс жолын айтыңыз.
+
+## Үлгіні оқыңыз
+
+Hi Noor! You can try the evening design class. It meets on Tuesdays. You have to bring a laptop, but you don’t have to buy any software. What time do you finish work?
+
+## Өзіңіз қолданып көріңіз
+
+«Жұмыстан кейін жаңа дағды үйренгім келеді» деген форум жазбасына жауап жазыңыз. Бір курс ұсыныңыз, бір талабын айтыңыз және бір сұрақ қойыңыз.', '## Language to use
+
+- Start yes/no questions with do for I, you, we or they, and does for he, she or it. Keep the main verb in its base form. Answer with Yes, I do or No, she doesn’t.
+- Have to and has to mean something is required. Don’t have to and doesn’t have to mean there is no requirement. They do not mean the action is forbidden.
+- Use when for time, where for place, who for a person and how much for price. To leave a message, give your name, your reason for calling and a way to contact you.
+
+## Read the example
+
+Hi Noor! You can try the evening design class. It meets on Tuesdays. You have to bring a laptop, but you don’t have to buy any software. What time do you finish work?
+
+## Try it yourself
+
+Write a reply to a forum post: ‘I want to learn a new skill after work.’ Suggest a practical course, mention one requirement and ask a question.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Тест по разделу', 'Бөлім бойынша тест', 'Unit check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"___ she work on Fridays?","options":["Does","Do","Is"],"correct":0},{"question":"She doesn’t ___ a laptop at work.","options":["uses","use","using"],"correct":1},{"question":"You ___ pay today. You can pay next week.","options":["has to","are","don’t have to"],"correct":2},{"question":"___ does the course start? — On Monday.","options":["When","Who","Where"],"correct":0},{"question":"Which is a request to leave a message?","options":["I leave for work at seven.","Could I leave a message?","Is this message old?"],"correct":1}]}'::jsonb, '00000000-0000-4000-8000-000000300121', '00000000-0000-4000-8000-000000003012', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('writing', 'Письменное задание', 'Жазып көріңіз', 'Put it into writing', 'Ответьте на сообщение на форуме: «Я хочу освоить новый навык после работы». Предложите курс, назовите одно требование и задайте вопрос.', '«Жұмыстан кейін жаңа дағды үйренгім келеді» деген форум жазбасына жауап жазыңыз. Бір курс ұсыныңыз, бір талабын айтыңыз және бір сұрақ қойыңыз.', 'Write a reply to a forum post: ‘I want to learn a new skill after work.’ Suggest a practical course, mention one requirement and ask a question.', '{"min_words":20,"max_words":60,"checklist":["Suggest a course.","Use have to or don’t have to.","End the question with a question mark."]}'::jsonb, '00000000-0000-4000-8000-000000300122', '00000000-0000-4000-8000-000000003012', 2) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003013', '00000000-0000-4000-8000-000000000500', 13, 25, '4.1 Комната для гостя', '4.1 Бөлмені сипаттау', '4.1 A room to stay in', 'Опишите комнату и скажите, где находятся предметы.', 'Бөлмені және ондағы заттардың орнын сипаттаңыз.', 'Describe rooms and say where objects are.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003013', '', '## Прочитайте пример
+
+- There’s a desk next to the window. There are two chairs by the desk.
+- Are there any shelves? — Yes, there are. They’re above the desk.
+
+## Языковая подсказка
+
+Для одного предмета используйте there is, для нескольких — there are. Вопросы начинаются с Is there …? или Are there …? Место можно описать словами next to, under, on и between.
+
+## Попробуйте сами
+
+Опишите комнату для гостя с двумя предлогами места. Спросите, есть ли место для работы.', '## Үлгіні оқыңыз
+
+- There’s a desk next to the window. There are two chairs by the desk.
+- Are there any shelves? — Yes, there are. They’re above the desk.
+
+## Қолданатын тілдік үлгі
+
+Бір зат үшін there is, бірнеше зат үшін there are қолданыңыз. Сұрақты Is there …? немесе Are there …? деп қойыңыз. Орынды next to, under, on және between арқылы сипаттаңыз.
+
+## Өзіңіз қолданып көріңіз
+
+Қонақ бөлмесін екі орын предлогымен сипаттаңыз. Жұмыс істеуге орын бар-жоғын сұраңыз.', '## Read the example
+
+- There’s a desk next to the window. There are two chairs by the desk.
+- Are there any shelves? — Yes, there are. They’re above the desk.
+
+## Language to use
+
+Use there is for one thing and there are for more than one. Ask Is there …? or Are there …? Use next to, under, on and between to say where something is.
+
+## Try it yourself
+
+Describe a guest room using two prepositions. Ask whether there is a place to work.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"shelf","kk":"сөре","ru":"полка","example":"There’s a shelf above the desk."},{"term":"desk","kk":"жазу үстелі","ru":"письменный стол","example":"The desk is by the window."},{"term":"next to","kk":"жанында","ru":"рядом с","example":"The chair is next to the bed."},{"term":"between","kk":"арасында","ru":"между","example":"The desk is between two chairs."}]}'::jsonb, '00000000-0000-4000-8000-000000300131', '00000000-0000-4000-8000-000000003013', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"There’s a desk next to the window."},{"text":"Are there any shelves?"}]}'::jsonb, '00000000-0000-4000-8000-000000300132', '00000000-0000-4000-8000-000000003013', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"There ___ two chairs by the desk.","options":["is","are","am"],"correct":1},{"question":"___ a lamp in the room?","options":["Are there","There are","Is there"],"correct":2},{"question":"Where are the shelves in the example?","options":["Above the desk.","Under the chairs.","Outside the room."],"correct":0}]}'::jsonb, '00000000-0000-4000-8000-000000300133', '00000000-0000-4000-8000-000000003013', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003014', '00000000-0000-4000-8000-000000000500', 14, 25, '4.2 Что можно сделать поблизости?', '4.2 Маңайда не істеуге болады?', '4.2 What can I do nearby?', 'Объясните, чем можно заняться в районе.', 'Ауданда не істеуге болатынын түсіндіріңіз.', 'Explain what people can do in a neighborhood.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003014', '', '## Прочитайте пример
+
+- You can rent bikes near the river, but you can’t ride in the market.
+- Can we buy lunch around here? — Yes, there’s a bakery next to the bus stop.
+
+## Языковая подсказка
+
+Возможность обозначают с can + начальная форма глагола, её отсутствие — с can’t. В общем вопросе поставьте can первым.
+
+## Попробуйте сами
+
+Выберите знакомый район. Назовите два места и объясните, чем можно заняться в каждом.', '## Үлгіні оқыңыз
+
+- You can rent bikes near the river, but you can’t ride in the market.
+- Can we buy lunch around here? — Yes, there’s a bakery next to the bus stop.
+
+## Қолданатын тілдік үлгі
+
+Мүмкін әрекет үшін can + етістіктің бастапқы түрін, мүмкін емес әрекет үшін can’t қолданыңыз. Сұрақты can сөзінен бастаңыз: Can we rent bikes here?
+
+## Өзіңіз қолданып көріңіз
+
+Өзіңіз білетін ауданды таңдаңыз. Екі орынды ұсынып, әр жерде не істеуге болатынын айтыңыз.', '## Read the example
+
+- You can rent bikes near the river, but you can’t ride in the market.
+- Can we buy lunch around here? — Yes, there’s a bakery next to the bus stop.
+
+## Language to use
+
+Use can + base verb for an available option and can’t for something that isn’t possible. Start a yes/no question with can: Can we rent bikes here?
+
+## Try it yourself
+
+Choose a neighborhood you know. Suggest two places and say what someone can do at each.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"bakery","kk":"наубайхана","ru":"пекарня","example":"The bakery opens at eight."},{"term":"bus stop","kk":"автобус аялдамасы","ru":"автобусная остановка","example":"Meet me at the bus stop."},{"term":"rent a bike","kk":"велосипед жалға алу","ru":"взять велосипед напрокат","example":"You can rent a bike near the river."},{"term":"around here","kk":"осы маңда","ru":"поблизости","example":"Is there a market around here?"}]}'::jsonb, '00000000-0000-4000-8000-000000300141', '00000000-0000-4000-8000-000000003014', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"Can we buy lunch around here?"},{"text":"You can rent a bike near the river."}]}'::jsonb, '00000000-0000-4000-8000-000000300142', '00000000-0000-4000-8000-000000003014', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"You can ___ a bike near the river.","options":["rent","rents","renting"],"correct":0},{"question":"Where can you buy lunch in the example?","options":["At the bus stop.","At the bakery.","On a bike."],"correct":1},{"question":"The library is closed. We ___ use it now.","options":["doesn’t","can","can’t"],"correct":2}]}'::jsonb, '00000000-0000-4000-8000-000000300143', '00000000-0000-4000-8000-000000003014', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003015', '00000000-0000-4000-8000-000000000500', 15, 25, '4.3 Как найти синее здание', '4.3 Көк ғимаратты табу', '4.3 Find the blue building', 'Объясните дорогу и помогите узнать здание.', 'Жолды түсіндіріп, ғимаратты белгілерімен танытыңыз.', 'Give clear directions and identify a building.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003015', '', '## Прочитайте пример
+
+- Excuse me, how do I get to the library?
+- Go straight, then turn left at the pharmacy. Don’t cross the main road.
+- Look for the tall blue building next to the park.
+
+## Языковая подсказка
+
+Начинайте указание с начальной формы глагола: Go straight. Turn left. Отрицательная инструкция строится с Don’t + глагол. Прилагательное ставится перед существительным.
+
+## Попробуйте сами
+
+Объясните маршрут от входа в здание до места внутри или рядом. Укажите один ориентир.', '## Үлгіні оқыңыз
+
+- Excuse me, how do I get to the library?
+- Go straight, then turn left at the pharmacy. Don’t cross the main road.
+- Look for the tall blue building next to the park.
+
+## Қолданатын тілдік үлгі
+
+Бағыт нұсқауын етістіктің бастапқы түрінен бастаңыз: Go straight. Turn left. Болымсыз нұсқау Don’t + етістік арқылы жасалады. Сын есім зат есімнің алдында тұрады.
+
+## Өзіңіз қолданып көріңіз
+
+Ғимараттың кіреберісінен ішіндегі не маңайдағы бір орынға жол көрсетіңіз. Бір бағдар қосыңыз.', '## Read the example
+
+- Excuse me, how do I get to the library?
+- Go straight, then turn left at the pharmacy. Don’t cross the main road.
+- Look for the tall blue building next to the park.
+
+## Language to use
+
+Begin a direction with the base verb: Go straight. Turn left. Use Don’t + base verb for a negative instruction. Use an adjective before a noun: a blue building, an old station.
+
+## Try it yourself
+
+Give directions from the front door of a building to somewhere inside or nearby. Add a landmark.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"go straight","kk":"тура жүріңіз","ru":"идите прямо","example":"Go straight for one block."},{"term":"turn left","kk":"солға бұрылыңыз","ru":"поверните налево","example":"Turn left at the pharmacy."},{"term":"cross","kk":"кесіп өту","ru":"перейти","example":"Don’t cross the main road."},{"term":"opposite","kk":"қарсы бетінде","ru":"напротив","example":"The library is opposite the park."}]}'::jsonb, '00000000-0000-4000-8000-000000300151', '00000000-0000-4000-8000-000000003015', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"Go straight, then turn left at the pharmacy."},{"text":"Look for the tall blue building."}]}'::jsonb, '00000000-0000-4000-8000-000000300152', '00000000-0000-4000-8000-000000003015', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"Which gives a direction?","options":["You turning left.","Turn left at the pharmacy.","Left is turn."],"correct":1},{"question":"Which order is correct?","options":["a building blue","building a blue","a blue building"],"correct":2},{"question":"What should you avoid doing in the example?","options":["Crossing the main road.","Turning left.","Looking for the library."],"correct":0}]}'::jsonb, '00000000-0000-4000-8000-000000300153', '00000000-0000-4000-8000-000000003015', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003016', '00000000-0000-4000-8000-000000000500', 16, 30, '4.4 Повторение и практика', '4.4 Қайталау және қолдану', '4.4 Review and use it', 'Опишите место и объясните, как до него добраться.', 'Бір орынды сипаттап, оған қалай баруды түсіндіріңіз.', 'Describe a place and give simple directions.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003016', '', '## Языковая подсказка
+
+- Для одного предмета используйте there is, для нескольких — there are. Вопросы начинаются с Is there …? или Are there …? Место можно описать словами next to, under, on и between.
+- Возможность обозначают с can + начальная форма глагола, её отсутствие — с can’t. В общем вопросе поставьте can первым.
+- Начинайте указание с начальной формы глагола: Go straight. Turn left. Отрицательная инструкция строится с Don’t + глагол. Прилагательное ставится перед существительным.
+
+## Прочитайте пример
+
+There’s a small market next to my apartment building. You can buy fruit there in the morning. From the bus stop, go straight and turn right at the pharmacy. My building is opposite the market.
+
+## Попробуйте сами
+
+Напишите записку для гостя. Опишите район, скажите, чем там можно заняться, и дайте два указания от ближайшей остановки.', '## Қолданатын тілдік үлгі
+
+- Бір зат үшін there is, бірнеше зат үшін there are қолданыңыз. Сұрақты Is there …? немесе Are there …? деп қойыңыз. Орынды next to, under, on және between арқылы сипаттаңыз.
+- Мүмкін әрекет үшін can + етістіктің бастапқы түрін, мүмкін емес әрекет үшін can’t қолданыңыз. Сұрақты can сөзінен бастаңыз: Can we rent bikes here?
+- Бағыт нұсқауын етістіктің бастапқы түрінен бастаңыз: Go straight. Turn left. Болымсыз нұсқау Don’t + етістік арқылы жасалады. Сын есім зат есімнің алдында тұрады.
+
+## Үлгіні оқыңыз
+
+There’s a small market next to my apartment building. You can buy fruit there in the morning. From the bus stop, go straight and turn right at the pharmacy. My building is opposite the market.
+
+## Өзіңіз қолданып көріңіз
+
+Қонаққа қысқа жазба жазыңыз. Ауданыңызды сипаттап, онда не істеуге болатынын айтыңыз және жақын аялдамадан екі бағыт нұсқауын беріңіз.', '## Language to use
+
+- Use there is for one thing and there are for more than one. Ask Is there …? or Are there …? Use next to, under, on and between to say where something is.
+- Use can + base verb for an available option and can’t for something that isn’t possible. Start a yes/no question with can: Can we rent bikes here?
+- Begin a direction with the base verb: Go straight. Turn left. Use Don’t + base verb for a negative instruction. Use an adjective before a noun: a blue building, an old station.
+
+## Read the example
+
+There’s a small market next to my apartment building. You can buy fruit there in the morning. From the bus stop, go straight and turn right at the pharmacy. My building is opposite the market.
+
+## Try it yourself
+
+Write a note for a visitor. Describe your neighborhood, say what they can do there and give two directions from the nearest bus stop.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Тест по разделу', 'Бөлім бойынша тест', 'Unit check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"There ___ a bank opposite my building.","options":["are","is","do"],"correct":1},{"question":"___ there two bus stops here?","options":["Is","Does","Are"],"correct":2},{"question":"Can I ___ a bike near here?","options":["rent","renting","rents"],"correct":0},{"question":"___ left after the station.","options":["Turning","Turn","Turns"],"correct":1},{"question":"The green building is ___ the park and the bank.","options":["under","in","between"],"correct":2}]}'::jsonb, '00000000-0000-4000-8000-000000300161', '00000000-0000-4000-8000-000000003016', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('writing', 'Письменное задание', 'Жазып көріңіз', 'Put it into writing', 'Напишите записку для гостя. Опишите район, скажите, чем там можно заняться, и дайте два указания от ближайшей остановки.', 'Қонаққа қысқа жазба жазыңыз. Ауданыңызды сипаттап, онда не істеуге болатынын айтыңыз және жақын аялдамадан екі бағыт нұсқауын беріңіз.', 'Write a note for a visitor. Describe your neighborhood, say what they can do there and give two directions from the nearest bus stop.', '{"min_words":20,"max_words":60,"checklist":["Use there is or there are.","Use can to describe an option.","Give two directions."]}'::jsonb, '00000000-0000-4000-8000-000000300162', '00000000-0000-4000-8000-000000003016', 2) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003017', '00000000-0000-4000-8000-000000000500', 17, 25, '5.1 Вчера на вокзале', '5.1 Кеше вокзалда', '5.1 At the station yesterday', 'Опишите транспорт в прошлом с was и were.', 'Көлік пен сапарды өткен шақта was және were арқылы сипаттаңыз.', 'Use was and were to describe transport in the past.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003017', '', '## Прочитайте пример
+
+- We were at the station at seven. The train was on time.
+- Was it crowded? — No, it wasn’t. There were plenty of seats.
+
+## Языковая подсказка
+
+С I, he, she, it употребляется was, с you, we, they — were. Отрицания: wasn’t и weren’t. В вопросе was или were выносится вперёд.
+
+## Попробуйте сами
+
+Вспомните поездку. Скажите, где вы были, много ли было людей в транспорте, и задайте вопрос о чужой поездке.', '## Үлгіні оқыңыз
+
+- We were at the station at seven. The train was on time.
+- Was it crowded? — No, it wasn’t. There were plenty of seats.
+
+## Қолданатын тілдік үлгі
+
+I, he, she, it есімдіктерімен was, you, we, they есімдіктерімен were қолданылады. Болымсыз түрі wasn’t және weren’t. Сұрақта was немесе were алдына шығады.
+
+## Өзіңіз қолданып көріңіз
+
+Бір сапарды еске түсіріңіз. Қайда болғаныңызды, көліктің адамға толы-толмағанын айтыңыз және басқа адамның сапары туралы бір сұрақ қойыңыз.', '## Read the example
+
+- We were at the station at seven. The train was on time.
+- Was it crowded? — No, it wasn’t. There were plenty of seats.
+
+## Language to use
+
+Use was with I, he, she and it; use were with you, we and they. Form negatives with wasn’t and weren’t. For a question, move was or were to the front.
+
+## Try it yourself
+
+Think of a trip. Say where you were, whether the transport was busy, and ask one question about someone else’s trip.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"train station","kk":"теміржол вокзалы","ru":"железнодорожный вокзал","example":"We were at the train station."},{"term":"crowded","kk":"адамға толы","ru":"переполненный","example":"The bus was crowded."},{"term":"on time","kk":"өз уақытында","ru":"вовремя","example":"Our train was on time."},{"term":"seat","kk":"орын","ru":"сиденье","example":"There were plenty of seats."}]}'::jsonb, '00000000-0000-4000-8000-000000300171', '00000000-0000-4000-8000-000000003017', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"We were at the station at seven."},{"text":"Was the train on time?"}]}'::jsonb, '00000000-0000-4000-8000-000000300172', '00000000-0000-4000-8000-000000003017', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"The train ___ on time yesterday.","options":["were","was","is"],"correct":1},{"question":"___ you at the station at seven?","options":["Did","Was","Were"],"correct":2},{"question":"Which sentence means the train had space?","options":["It wasn’t crowded.","It wasn’t on time.","It was crowded."],"correct":0}]}'::jsonb, '00000000-0000-4000-8000-000000300173', '00000000-0000-4000-8000-000000003017', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003018', '00000000-0000-4000-8000-000000000500', 18, 25, '5.2 Одна удачная поездка', '5.2 Есте қалған сапар', '5.2 One good trip', 'Расскажите о завершившейся поездке с правильными и неправильными глаголами.', 'Аяқталған сапарды дұрыс және бұрыс етістіктер арқылы әңгімелеңіз.', 'Narrate a completed trip using regular and irregular verbs.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003018', '', '## Прочитайте пример
+
+- Last Sunday, I went to a lake with my aunt. We took the bus and walked from the village.
+- We saw wild horses. We stayed for three hours and then returned home.
+
+## Языковая подсказка
+
+У большинства правильных глаголов в прошедшем времени добавляется -ed. Неправильные пары нужно запомнить: go → went, take → took, see → saw. Прошедшая форма одинакова для всех лиц.
+
+## Попробуйте сами
+
+Напишите три предложения о поездке. Используйте хотя бы один правильный и два неправильных глагола.', '## Үлгіні оқыңыз
+
+- Last Sunday, I went to a lake with my aunt. We took the bus and walked from the village.
+- We saw wild horses. We stayed for three hours and then returned home.
+
+## Қолданатын тілдік үлгі
+
+Көптеген дұрыс етістіктің өткен шағына -ed қосылады: visit → visited. Бұрыс етістіктерді жұппен жаттаңыз: go → went, take → took, see → saw. Өткен шақ формасы жаққа қарай өзгермейді.
+
+## Өзіңіз қолданып көріңіз
+
+Сапар туралы үш сөйлем жазыңыз. Кемінде бір дұрыс және екі бұрыс етістік қолданыңыз.', '## Read the example
+
+- Last Sunday, I went to a lake with my aunt. We took the bus and walked from the village.
+- We saw wild horses. We stayed for three hours and then returned home.
+
+## Language to use
+
+Add -ed to most regular past verbs: visit → visited. Learn common irregular forms as pairs: go → went, take → took, see → saw. The past form stays the same for all subjects.
+
+## Try it yourself
+
+Write three sentences about a journey. Use at least one regular verb and two irregular verbs.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"journey","kk":"сапар","ru":"путешествие","example":"The journey took two hours."},{"term":"visit","kk":"бару; аралау","ru":"посещать","example":"We visited a museum."},{"term":"return","kk":"қайту","ru":"возвращаться","example":"We returned home in the evening."},{"term":"take a bus","kk":"автобуспен бару","ru":"поехать на автобусе","example":"We took a bus to the lake."}]}'::jsonb, '00000000-0000-4000-8000-000000300181', '00000000-0000-4000-8000-000000003018', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"Last Sunday, I went to a lake."},{"text":"We saw wild horses and returned home at six."}]}'::jsonb, '00000000-0000-4000-8000-000000300182', '00000000-0000-4000-8000-000000003018', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"Last Sunday we ___ to the lake.","options":["go","goed","went"],"correct":2},{"question":"I ___ the museum yesterday.","options":["visited","visiting","visit"],"correct":0},{"question":"What did they see in the example?","options":["A train station.","Wild horses.","A city park."],"correct":1}]}'::jsonb, '00000000-0000-4000-8000-000000300183', '00000000-0000-4000-8000-000000003018', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003019', '00000000-0000-4000-8000-000000000500', 19, 25, '5.3 Вопросы о поездке', '5.3 Сапар жайлы сұрақтар', '5.3 Questions about a trip', 'Задайте вопросы о прошлой поездке и объясните изменение плана.', 'Өткен сапар туралы сұрап, жоспардың өзгеруін түсіндіріңіз.', 'Ask past questions and explain a change of plan.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003019', '', '## Прочитайте пример
+
+- Did you stay near the beach? — No, we didn’t. We stayed in town.
+- At the hotel: Hello, I have a reservation under Sadykov. What time is breakfast?
+
+## Языковая подсказка
+
+Большинство вопросов в прошлом строится с did + подлежащее + начальная форма, отрицания — с didn’t + начальная форма. С глаголом be используйте was или were без did.
+
+## Попробуйте сами
+
+Задайте собеседнику два вопроса о поездке. Затем разыграйте разговор при заселении в гостиницу с бронью.', '## Үлгіні оқыңыз
+
+- Did you stay near the beach? — No, we didn’t. We stayed in town.
+- At the hotel: Hello, I have a reservation under Sadykov. What time is breakfast?
+
+## Қолданатын тілдік үлгі
+
+Өткен шақтағы сұрақта did + бастауыш + етістіктің бастапқы түрі, болымсыз сөйлемде didn’t + бастапқы түр қолданылады. Негізгі етістік be болса, did қолданбай was не were айтыңыз.
+
+## Өзіңіз қолданып көріңіз
+
+Серігіңізден сапары жайлы екі сұрақ сұраңыз. Кейін броньмен қонақүйге келген жағдайды ойнаңыз.', '## Read the example
+
+- Did you stay near the beach? — No, we didn’t. We stayed in town.
+- At the hotel: Hello, I have a reservation under Sadykov. What time is breakfast?
+
+## Language to use
+
+Use did + subject + base verb for most past questions and didn’t + base verb for negatives. Use was or were without did when the main verb is be. At a hotel, use present phrases for what you need now.
+
+## Try it yourself
+
+Ask a partner two questions about a trip. Then role-play arriving at a hotel with a booking.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"reservation","kk":"алдын ала тапсырыс","ru":"бронь","example":"I have a reservation under Sadykov."},{"term":"check in","kk":"қонақүйге тіркелу","ru":"заселяться","example":"Can I check in now?"},{"term":"front desk","kk":"қабылдау орны","ru":"стойка регистрации","example":"The keys are at the front desk."},{"term":"stay in town","kk":"қалада тұру","ru":"остановиться в городе","example":"We stayed in town last night."}]}'::jsonb, '00000000-0000-4000-8000-000000300191', '00000000-0000-4000-8000-000000003019', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"Did you stay near the beach?"},{"text":"Hello. I have a reservation under Sadykov."}]}'::jsonb, '00000000-0000-4000-8000-000000300192', '00000000-0000-4000-8000-000000003019', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"Did you ___ in town?","options":["stayed","stay","stays"],"correct":1},{"question":"We didn’t ___ breakfast at the hotel.","options":["had","has","have"],"correct":2},{"question":"Which phrase works when checking in?","options":["I have a reservation under Sadykov.","I took the train yesterday.","I usually eat at six."],"correct":0}]}'::jsonb, '00000000-0000-4000-8000-000000300193', '00000000-0000-4000-8000-000000003019', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003020', '00000000-0000-4000-8000-000000000500', 20, 30, '5.4 Повторение и практика', '5.4 Қайталау және қолдану', '5.4 Review and use it', 'Расскажите о прошедшей поездке и заселитесь в гостиницу.', 'Өткен сапар туралы айтып, қонақүйге тіркеле біліңіз.', 'Talk about a past trip and handle a hotel check-in.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003020', '', '## Языковая подсказка
+
+- С I, he, she, it употребляется was, с you, we, they — were. Отрицания: wasn’t и weren’t. В вопросе was или were выносится вперёд.
+- У большинства правильных глаголов в прошедшем времени добавляется -ed. Неправильные пары нужно запомнить: go → went, take → took, see → saw. Прошедшая форма одинакова для всех лиц.
+- Большинство вопросов в прошлом строится с did + подлежащее + начальная форма, отрицания — с didn’t + начальная форма. С глаголом be используйте was или were без did.
+
+## Прочитайте пример
+
+Last spring, I went to Turkistan with my cousin. We took an early train because we wanted a full day in the city. It rained after lunch, so we visited a museum. The train home was quiet.
+
+## Попробуйте сами
+
+Напишите короткий рассказ о поездке. Скажите, куда и на чём вы ездили и что случилось. Свяжите две мысли с so или because.', '## Қолданатын тілдік үлгі
+
+- I, he, she, it есімдіктерімен was, you, we, they есімдіктерімен were қолданылады. Болымсыз түрі wasn’t және weren’t. Сұрақта was немесе were алдына шығады.
+- Көптеген дұрыс етістіктің өткен шағына -ed қосылады: visit → visited. Бұрыс етістіктерді жұппен жаттаңыз: go → went, take → took, see → saw. Өткен шақ формасы жаққа қарай өзгермейді.
+- Өткен шақтағы сұрақта did + бастауыш + етістіктің бастапқы түрі, болымсыз сөйлемде didn’t + бастапқы түр қолданылады. Негізгі етістік be болса, did қолданбай was не were айтыңыз.
+
+## Үлгіні оқыңыз
+
+Last spring, I went to Turkistan with my cousin. We took an early train because we wanted a full day in the city. It rained after lunch, so we visited a museum. The train home was quiet.
+
+## Өзіңіз қолданып көріңіз
+
+Сапар туралы қысқа әңгіме жазыңыз. Қайда барғаныңызды, қалай жеткеніңізді және бір оқиғаны айтыңыз. Екі ойды so немесе because арқылы байланыстырыңыз.', '## Language to use
+
+- Use was with I, he, she and it; use were with you, we and they. Form negatives with wasn’t and weren’t. For a question, move was or were to the front.
+- Add -ed to most regular past verbs: visit → visited. Learn common irregular forms as pairs: go → went, take → took, see → saw. The past form stays the same for all subjects.
+- Use did + subject + base verb for most past questions and didn’t + base verb for negatives. Use was or were without did when the main verb is be. At a hotel, use present phrases for what you need now.
+
+## Read the example
+
+Last spring, I went to Turkistan with my cousin. We took an early train because we wanted a full day in the city. It rained after lunch, so we visited a museum. The train home was quiet.
+
+## Try it yourself
+
+Write a short travel story. Say where you went, how you got there and one thing that happened. Link two ideas with so or because.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Тест по разделу', 'Бөлім бойынша тест', 'Unit check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"We ___ in Turkistan last week.","options":["were","was","did"],"correct":0},{"question":"I ___ a train to the city.","options":["take","took","taked"],"correct":1},{"question":"What did you ___ after lunch?","options":["did","doing","do"],"correct":2},{"question":"I stayed inside ___ it rained.","options":["because","so","or"],"correct":0},{"question":"I didn’t ___ the museum yesterday.","options":["visited","visit","visits"],"correct":1}]}'::jsonb, '00000000-0000-4000-8000-000000300201', '00000000-0000-4000-8000-000000003020', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('writing', 'Письменное задание', 'Жазып көріңіз', 'Put it into writing', 'Напишите короткий рассказ о поездке. Скажите, куда и на чём вы ездили и что случилось. Свяжите две мысли с so или because.', 'Сапар туралы қысқа әңгіме жазыңыз. Қайда барғаныңызды, қалай жеткеніңізді және бір оқиғаны айтыңыз. Екі ойды so немесе because арқылы байланыстырыңыз.', 'Write a short travel story. Say where you went, how you got there and one thing that happened. Link two ideas with so or because.', '{"min_words":20,"max_words":60,"checklist":["Name a place and a time.","Use two past verbs.","Give a reason or result with because or so."]}'::jsonb, '00000000-0000-4000-8000-000000300202', '00000000-0000-4000-8000-000000003020', 2) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003021', '00000000-0000-4000-8000-000000000500', 21, 25, '6.1 Что есть на кухне?', '6.1 Асүйде не бар?', '6.1 What’s in the kitchen?', 'Различайте исчисляемые и неисчисляемые названия продуктов и спрашивайте, что есть.', 'Тағам атауларын саналатын және саналмайтын зат есімдерге бөліп, не барын сұраңыз.', 'Sort food into count and noncount nouns and ask what is available.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003021', '', '## Прочитайте пример
+
+- We have some bread and an egg. Do we have any tomatoes?
+- No, we don’t have any. Can I have some water before we go shopping?
+
+## Языковая подсказка
+
+С одним исчисляемым предметом используйте a или an. В утверждениях с множественным числом и неисчисляемыми словами употребляйте some. Any часто стоит в вопросах и отрицаниях; some употребляется и в вежливой просьбе.
+
+## Попробуйте сами
+
+Составьте список на обед. Скажите, что у вас уже есть, и спросите о двух нужных продуктах.', '## Үлгіні оқыңыз
+
+- We have some bread and an egg. Do we have any tomatoes?
+- No, we don’t have any. Can I have some water before we go shopping?
+
+## Қолданатын тілдік үлгі
+
+Бір саналатын зат үшін a немесе an айтыңыз: an egg. Болымды сөйлемде көпше және саналмайтын зат есімдермен some, сұрақ пен болымсыз сөйлемде көбіне any қолданылады. Сыпайы өтініште some де айтылады.
+
+## Өзіңіз қолданып көріңіз
+
+Түскі асқа тізім жасаңыз. Не барын айтып, қажет екі зат туралы сұраңыз.', '## Read the example
+
+- We have some bread and an egg. Do we have any tomatoes?
+- No, we don’t have any. Can I have some water before we go shopping?
+
+## Language to use
+
+Use a or an for one countable item: an egg. Use some with plurals or noncount nouns in positive statements. Any is common in questions and negatives. Some is also common in polite requests: Can I have some water?
+
+## Try it yourself
+
+Make a list for lunch. Say what you have and ask about two things you need.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"egg","kk":"жұмыртқа","ru":"яйцо","example":"I need an egg."},{"term":"bread","kk":"нан","ru":"хлеб","example":"We have some bread."},{"term":"rice","kk":"күріш","ru":"рис","example":"Do we have any rice?"},{"term":"tomato","kk":"қызанақ","ru":"помидор","example":"There are three tomatoes."}]}'::jsonb, '00000000-0000-4000-8000-000000300211', '00000000-0000-4000-8000-000000003021', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"We have some bread and an egg."},{"text":"Do we have any tomatoes?"}]}'::jsonb, '00000000-0000-4000-8000-000000300212', '00000000-0000-4000-8000-000000003021', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"I need ___ egg.","options":["a","an","any"],"correct":1},{"question":"We don’t have ___ rice.","options":["a","an","any"],"correct":2},{"question":"Which word is usually noncount here?","options":["Bread","Egg","Tomato"],"correct":0}]}'::jsonb, '00000000-0000-4000-8000-000000300213', '00000000-0000-4000-8000-000000003021', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003022', '00000000-0000-4000-8000-000000000500', 22, 25, '6.2 Хватит на четверых', '6.2 Төрт адамға жететін ас', '6.2 Enough for four people', 'Спросите о количестве и назовите продукты с единицами измерения.', 'Мөлшерін сұрап, азықты ыдыс не өлшем бірлігімен айтыңыз.', 'Ask about quantities and use containers to measure food.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003022', '', '## Прочитайте пример
+
+- How many apples do we need? — Four.
+- How much juice do we have? — Not much. Let’s buy two bottles of juice and a bag of rice.
+
+## Языковая подсказка
+
+С исчисляемыми словами во множественном числе спрашивайте How many?, с неисчисляемыми — How much? A lot of подходит для обоих типов. Чтобы посчитать упаковки, скажите a bottle of water или a bag of rice.
+
+## Попробуйте сами
+
+Спланируйте ужин на четверых. Задайте два вопроса о количестве и составьте список покупок минимум с двумя упаковками.', '## Үлгіні оқыңыз
+
+- How many apples do we need? — Four.
+- How much juice do we have? — Not much. Let’s buy two bottles of juice and a bag of rice.
+
+## Қолданатын тілдік үлгі
+
+Көпше саналатын затпен How many?, саналмайтын затпен How much? сұрағын қойыңыз. A lot of екі түрімен де қолданылады. Ыдыс пен қаптаманы a bottle of water немесе a bag of rice деп санауға болады.
+
+## Өзіңіз қолданып көріңіз
+
+Төрт адамға кешкі ас жоспарлаңыз. Екі мөлшерді сұрап, кемінде екі қаптамасы бар тізім жасаңыз.', '## Read the example
+
+- How many apples do we need? — Four.
+- How much juice do we have? — Not much. Let’s buy two bottles of juice and a bag of rice.
+
+## Language to use
+
+Ask How many? about plural countable items and How much? about noncount nouns. A lot of works with both. Use a bottle of water or a bag of rice to count packages.
+
+## Try it yourself
+
+Plan dinner for four. Ask about two quantities, then give a shopping list with at least two containers.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"a bottle of","kk":"бір бөтелке","ru":"бутылка","example":"We need two bottles of juice."},{"term":"a bag of","kk":"бір қап","ru":"пакет","example":"Buy a bag of rice."},{"term":"a bowl of","kk":"бір тостаған","ru":"миска","example":"I’d like a bowl of soup."},{"term":"enough","kk":"жеткілікті","ru":"достаточно","example":"There’s enough juice for everyone."}]}'::jsonb, '00000000-0000-4000-8000-000000300221', '00000000-0000-4000-8000-000000003022', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"How many apples do we need?"},{"text":"We need two bottles of juice."}]}'::jsonb, '00000000-0000-4000-8000-000000300222', '00000000-0000-4000-8000-000000003022', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"How ___ rice do we need?","options":["many","a lot","much"],"correct":2},{"question":"How ___ apples do you want?","options":["many","much","a"],"correct":0},{"question":"Choose the natural phrase.","options":["two juices of bottle","two bottles of juice","two bottle juice"],"correct":1}]}'::jsonb, '00000000-0000-4000-8000-000000300223', '00000000-0000-4000-8000-000000003022', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003023', '00000000-0000-4000-8000-000000000500', 23, 25, '6.3 От рецепта к заказу', '6.3 Ас дайындау және тапсырыс беру', '6.3 From a recipe to an order', 'Объясните короткий рецепт и вежливо закажите еду.', 'Қысқа рецептті түсіндіріп, сыпайы тапсырыс беріңіз.', 'Explain a short recipe and order food politely.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003023', '', '## Прочитайте пример
+
+- Take a tomato. Chop the tomato and put it in a bowl. Add some cheese.
+- Server: Are you ready to order? — Yes. I’d like the tomato salad and some tea, please.
+
+## Языковая подсказка
+
+При первом упоминании одного предмета используйте a или an, а затем the, если уже ясно, о каком предмете речь. Говоря о продукте в целом, опускайте артикль. Для заказа используйте I’d like …, please.
+
+## Попробуйте сами
+
+Назовите три шага приготовления простого блюда. Затем закажите блюдо и напиток, как в кафе.', '## Үлгіні оқыңыз
+
+- Take a tomato. Chop the tomato and put it in a bowl. Add some cheese.
+- Server: Are you ready to order? — Yes. I’d like the tomato salad and some tea, please.
+
+## Қолданатын тілдік үлгі
+
+Бір затты алғаш атағанда a не an, кейін нақты қай зат екенін білеміз дегенде the қолданыңыз. Жалпы тағам түрі туралы айтқанда артикль қажет емес. Тапсырыс үшін I’d like …, please үлгісін айтыңыз.
+
+## Өзіңіз қолданып көріңіз
+
+Қарапайым тағамның үш қадамын айтыңыз. Кейін дәмханада отырғандай сол тағам мен сусынға тапсырыс беріңіз.', '## Read the example
+
+- Take a tomato. Chop the tomato and put it in a bowl. Add some cheese.
+- Server: Are you ready to order? — Yes. I’d like the tomato salad and some tea, please.
+
+## Language to use
+
+Use a or an when you first mention one item, then the when the listener knows which item you mean. Use no article when talking about food in general. To order, use I’d like …, please.
+
+## Try it yourself
+
+Give three steps for making a simple dish. Then order it and a drink as if you were in a café.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('vocabulary', 'Ключевые слова', 'Негізгі сөздер', 'Key words', 'Послушайте слова и проверьте их значения.', 'Сөздерді тыңдап, мағынасын тексеріңіз.', 'Listen to the words and check their meanings.', '{"words":[{"term":"chop","kk":"турау","ru":"нарезать","example":"Chop the tomato."},{"term":"mix","kk":"араластыру","ru":"смешивать","example":"Mix the cheese and vegetables."},{"term":"menu","kk":"ас мәзірі","ru":"меню","example":"Could I see the menu?"},{"term":"order","kk":"тапсырыс беру","ru":"заказывать","example":"We’re ready to order."}]}'::jsonb, '00000000-0000-4000-8000-000000300231', '00000000-0000-4000-8000-000000003023', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('pronunciation', 'Послушайте и произнесите', 'Тыңдаңыз және айтыңыз', 'Listen and speak', 'Послушайте, повторите каждую фразу и запишите свой голос.', 'Тыңдаңыз, әр сөйлемді қайталаңыз да, даусыңызды жазыңыз.', 'Listen, repeat each phrase, and record yourself.', '{"phrases":[{"text":"Chop the tomato and put it in a bowl."},{"text":"I’d like the salad and some tea, please."}]}'::jsonb, '00000000-0000-4000-8000-000000300232', '00000000-0000-4000-8000-000000003023', 2) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Быстрая проверка', 'Қысқа тексеру', 'Quick check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"Take a tomato. Then chop ___ tomato.","options":["a","an","the"],"correct":2},{"question":"Choose the polite order.","options":["I’d like the soup, please.","Soup me.","Have soup me, please."],"correct":0},{"question":"Which action uses a knife?","options":["Mix the ingredients.","Chop the tomato.","Order tea."],"correct":1}]}'::jsonb, '00000000-0000-4000-8000-000000300233', '00000000-0000-4000-8000-000000003023', 3) on conflict do nothing;
+insert into public.lessons (id, course_id, sort, minutes, title, title_kk, title_en, summary, summary_kk, summary_en, is_free, is_published) values ('00000000-0000-4000-8000-000000003024', '00000000-0000-4000-8000-000000000500', 24, 30, '6.4 Повторение и практика', '6.4 Қайталау және қолдану', '6.4 Review and use it', 'Расскажите об ингредиентах, закажите блюдо и напишите короткий отзыв.', 'Құрамын айтып, асқа тапсырыс беріңіз және қысқа пікір жазыңыз.', 'Talk about ingredients, order a meal, and write a short review.', false, true) on conflict do nothing;
+insert into public.lesson_materials (lesson_id, video_url, body, body_kk, body_en) values ('00000000-0000-4000-8000-000000003024', '', '## Языковая подсказка
+
+- С одним исчисляемым предметом используйте a или an. В утверждениях с множественным числом и неисчисляемыми словами употребляйте some. Any часто стоит в вопросах и отрицаниях; some употребляется и в вежливой просьбе.
+- С исчисляемыми словами во множественном числе спрашивайте How many?, с неисчисляемыми — How much? A lot of подходит для обоих типов. Чтобы посчитать упаковки, скажите a bottle of water или a bag of rice.
+- При первом упоминании одного предмета используйте a или an, а затем the, если уже ясно, о каком предмете речь. Говоря о продукте в целом, опускайте артикль. Для заказа используйте I’d like …, please.
+
+## Прочитайте пример
+
+I went to a small café near the station. I ordered a bowl of soup and some bread. The soup was hot and fresh. My friend liked the salad, too. Try the soup if you visit.
+
+## Попробуйте сами
+
+Напишите короткий отзыв о настоящем или вымышленном ресторане. Расскажите, что заказали, опишите еду и порекомендуйте другу одно блюдо.', '## Қолданатын тілдік үлгі
+
+- Бір саналатын зат үшін a немесе an айтыңыз: an egg. Болымды сөйлемде көпше және саналмайтын зат есімдермен some, сұрақ пен болымсыз сөйлемде көбіне any қолданылады. Сыпайы өтініште some де айтылады.
+- Көпше саналатын затпен How many?, саналмайтын затпен How much? сұрағын қойыңыз. A lot of екі түрімен де қолданылады. Ыдыс пен қаптаманы a bottle of water немесе a bag of rice деп санауға болады.
+- Бір затты алғаш атағанда a не an, кейін нақты қай зат екенін білеміз дегенде the қолданыңыз. Жалпы тағам түрі туралы айтқанда артикль қажет емес. Тапсырыс үшін I’d like …, please үлгісін айтыңыз.
+
+## Үлгіні оқыңыз
+
+I went to a small café near the station. I ordered a bowl of soup and some bread. The soup was hot and fresh. My friend liked the salad, too. Try the soup if you visit.
+
+## Өзіңіз қолданып көріңіз
+
+Нақты не ойдан шығарылған мейрамхана туралы қысқа пікір жазыңыз. Не алғаныңызды айтып, тағамды сипаттаңыз және досыңызға бір тағам ұсыныңыз.', '## Language to use
+
+- Use a or an for one countable item: an egg. Use some with plurals or noncount nouns in positive statements. Any is common in questions and negatives. Some is also common in polite requests: Can I have some water?
+- Ask How many? about plural countable items and How much? about noncount nouns. A lot of works with both. Use a bottle of water or a bag of rice to count packages.
+- Use a or an when you first mention one item, then the when the listener knows which item you mean. Use no article when talking about food in general. To order, use I’d like …, please.
+
+## Read the example
+
+I went to a small café near the station. I ordered a bowl of soup and some bread. The soup was hot and fresh. My friend liked the salad, too. Try the soup if you visit.
+
+## Try it yourself
+
+Write a short review of a real or imaginary restaurant. Say what you ordered, describe the food, and recommend one dish to a friend.') on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('quiz', 'Тест по разделу', 'Бөлім бойынша тест', 'Unit check', 'Выберите ответ, подходящий к ситуации.', 'Жағдайға сай жауапты таңдаңыз.', 'Choose the answer that fits the situation.', '{"questions":[{"question":"Do you have ___ milk?","options":["any","an","a"],"correct":0},{"question":"How ___ bowls do we need?","options":["much","many","any"],"correct":1},{"question":"I bought a cake. ___ cake was delicious.","options":["An","Some","The"],"correct":2},{"question":"Can I have a ___ of water?","options":["bottle","bread","tomato"],"correct":0},{"question":"Which sentence recommends a dish?","options":["The menu is on the table.","Try the pumpkin soup.","I sat near the door."],"correct":1}]}'::jsonb, '00000000-0000-4000-8000-000000300241', '00000000-0000-4000-8000-000000003024', 1) on conflict do nothing;
+insert into public.tasks (kind, title, title_kk, title_en, prompt, prompt_kk, prompt_en, data, id, lesson_id, sort) values ('writing', 'Письменное задание', 'Жазып көріңіз', 'Put it into writing', 'Напишите короткий отзыв о настоящем или вымышленном ресторане. Расскажите, что заказали, опишите еду и порекомендуйте другу одно блюдо.', 'Нақты не ойдан шығарылған мейрамхана туралы қысқа пікір жазыңыз. Не алғаныңызды айтып, тағамды сипаттаңыз және досыңызға бір тағам ұсыныңыз.', 'Write a short review of a real or imaginary restaurant. Say what you ordered, describe the food, and recommend one dish to a friend.', '{"min_words":20,"max_words":60,"checklist":["Name two items you ordered.","Use one adjective to describe a dish.","Give one recommendation."]}'::jsonb, '00000000-0000-4000-8000-000000300242', '00000000-0000-4000-8000-000000003024', 2) on conflict do nothing;
 commit;

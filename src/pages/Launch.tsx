@@ -1,6 +1,7 @@
 import { useRef, useState, type FormEvent } from "react";
 import { BookOpen, Check, ChevronDown, CirclePlay, Copy, Gift, Headphones, MessageCircle, Mic, Sparkles } from "lucide-react";
 import "@fontsource-variable/golos-text";
+import { ELEMENTARY_A2_SLUG } from "../data/elementaryA2";
 import { backend } from "../lib/backend";
 import { courseCoverUrl, landingHeroPhoto, landingHeroPhotoSmall } from "../lib/courseCovers";
 import { useI18n } from "../lib/i18n";
@@ -11,7 +12,7 @@ import { useAsync } from "../lib/useAsync";
 import "../styles/launch.css";
 
 const sampleCourse = "everyday-english-b1";
-const otherSampleCourses = ["first-steps-a1", "clear-pronunciation-a2", "business-english-b2"];
+const otherSampleCourses = ["first-steps-a1", ELEMENTARY_A2_SLUG, "clear-pronunciation-a2", "business-english-b2"];
 
 export default function Launch() {
   const { locale, setLocale, price, pick } = useI18n();

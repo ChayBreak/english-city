@@ -2,6 +2,7 @@
 // opens with. The demo mode reads it directly; `npm run seed:sql` turns it into
 // supabase/seed.sql for a real project. Everything here is editable in the admin.
 import { preIntermediateLessons } from "./preIntermediate.ts";
+import { elementaryA2Course } from "./elementaryA2.ts";
 import type {
   Course,
   Lesson,
@@ -945,3 +946,4 @@ seedCourses.push(...originalCourses.map((course) => course.id === B1 ? {
     ...course.lessons.map((lesson) => ({ ...lesson, is_published: false, sort: 100 + lesson.sort })),
   ],
 } : course));
+seedCourses.push(elementaryA2Course);
