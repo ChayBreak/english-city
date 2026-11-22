@@ -1,13 +1,14 @@
-import { BookOpen, CheckCircle2, Mic, PlayCircle, QrCode, Trophy, Volume2 } from "lucide-react";
+import { BookOpen, CheckCircle2, Gift, Mic, PlayCircle, QrCode, Trophy, Volume2 } from "lucide-react";
 import { backend } from "../lib/backend";
 import { useI18n } from "../lib/i18n";
+import { launchCopy } from "../lib/launchCopy";
 import { Link, navigate } from "../lib/router";
 import { LEVELS } from "../lib/types";
 import { useAsync } from "../lib/useAsync";
 import { Badge, BannerArt, Button, CourseCard, PlanCard, StatTile } from "../ui";
 
 export default function Home() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const courses = useAsync(() => backend.listCourses(), []);
   const plans = useAsync(() => backend.listPlans(), []);
 
@@ -29,6 +30,7 @@ export default function Home() {
         <Button variant="dark" arrow to="/courses">
           {t("home.ctaCourses")}
         </Button>
+        <Link className="pill-chip" to="/start"><Gift size={17} />{launchCopy[locale].offer}</Link>
         <div className="hero-points">
           <span>
             <CheckCircle2 strokeWidth={1.75} />

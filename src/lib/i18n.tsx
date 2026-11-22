@@ -1,20 +1,20 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { dictionaries, type Key } from "./dict";
+import { useLocation } from "./router";
 import type { Locale } from "./types";
 
 const STORAGE_KEY = "ec-locale";
 const NBSP = String.fromCharCode(0xa0);
 const KK_MONTHS = ["қаңтар", "ақпан", "наурыз", "сәуір", "мамыр", "маусым", "шілде", "тамыз", "қыркүйек", "қазан", "қараша", "желтоқсан"];
 
-function initialLocale(): Locale {
+function initialLocalePreference(): Locale | null {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved === "ru" || saved === "kk" || saved === "en") return saved;
   } catch {
     /* default below */
   }
-  // English is only ever an explicit choice: many local browsers are set to English.
-  return typeof navigator !== "undefined" && navigator.language?.startsWith("kk") ? "kk" : "ru";
+  return null;
 }
 
 type Vars = Record<string, string | number>;
@@ -32,7 +32,11 @@ function pluralIndex(n: number, locale: Locale) {
 }
 
 function useI18nValue() {
-  const [locale, setLocaleState] = useState<Locale>(initialLocale);
+  const [preference, setLocaleState] = useState(initialLocalePreference);
+  const { path } = useLocation();
+  // English is only ever an explicit choice: many local browsers are set to English.
+  const prefersKazakh = typeof navigator !== "undefined" && navigator.language?.startsWith("kk");
+  const locale = preference ?? (path === "/start" || prefersKazakh ? "kk" : "ru");
 
   useEffect(() => {
     document.documentElement.lang = locale;

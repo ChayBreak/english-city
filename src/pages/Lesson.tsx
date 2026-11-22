@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight, Circle, Lock, PlayCircle } from "lucide-react";
 import { backend } from "../lib/backend";
 import { useAuth } from "../lib/auth";
+import { lessonCoverUrl } from "../lib/courseCovers";
 import { useI18n } from "../lib/i18n";
 import { RichText } from "../lib/richtext";
 import { Link } from "../lib/router";
@@ -38,6 +39,7 @@ export default function LessonPage({ id }: { id: string }) {
   const done = completed.has(lesson.id);
   const video = materials?.video_url ? embedUrl(materials.video_url) : null;
   const body = materials ? pick(materials, "body") : "";
+  const cover = materials ? lessonCoverUrl(course, lesson) : undefined;
 
   const markDone = async () => {
     if (!profile) return;
@@ -113,6 +115,7 @@ export default function LessonPage({ id }: { id: string }) {
               <Paywall loggedIn={Boolean(profile)} />
             ) : (
               <>
+                {cover && <img className="lesson-cover-photo" src={cover} alt="" width={1440} height={720} decoding="async" />}
                 {video && (
                   <div className="video">
                     <iframe

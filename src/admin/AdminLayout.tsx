@@ -1,8 +1,9 @@
 import { createContext, useContext, type ReactNode } from "react";
-import { BookOpen, ClipboardCheck, CreditCard, ExternalLink, LayoutDashboard, LogOut, QrCode, Tags, Users } from "lucide-react";
+import { BookOpen, ClipboardCheck, CreditCard, ExternalLink, LayoutDashboard, LogOut, MessageCircle, QrCode, Tags, Users } from "lucide-react";
 import { backend } from "../lib/backend";
 import { useAuth } from "../lib/auth";
 import { useI18n } from "../lib/i18n";
+import { launchCopy } from "../lib/launchCopy";
 import { useLocation } from "../lib/router";
 import { useAsync } from "../lib/useAsync";
 import { AppShell, signOut, type NavSection } from "../layout";
@@ -14,7 +15,7 @@ const Context = createContext<AdminContext>({ stats: undefined, refreshStats: ()
 export const useAdmin = () => useContext(Context);
 
 export function AdminLayout({ children }: { children: ReactNode }) {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const { ready, profile, isAdmin } = useAuth();
   const { path } = useLocation();
   const stats = useAsync(() => (isAdmin ? backend.adminStats() : Promise.resolve(undefined)), [isAdmin, path]);
@@ -37,6 +38,7 @@ export function AdminLayout({ children }: { children: ReactNode }) {
       items: [
         { to: "/admin", label: t("admin.dashboard"), icon: LayoutDashboard, exact: true },
         { to: "/admin/payments", label: t("admin.payments"), icon: CreditCard, count: stats.data?.pendingPayments },
+        { to: "/admin/leads", label: launchCopy[locale].admin, icon: MessageCircle },
         { to: "/admin/reviews", label: t("admin.reviews"), icon: ClipboardCheck, count: stats.data?.pendingReviews },
         { to: "/admin/students", label: t("admin.students"), icon: Users },
         { to: "/admin/courses", label: t("admin.courses"), icon: BookOpen },

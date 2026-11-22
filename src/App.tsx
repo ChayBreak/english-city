@@ -4,6 +4,7 @@ import Courses from "./admin/Courses";
 import CourseEditor from "./admin/CourseEditor";
 import Dashboard from "./admin/Dashboard";
 import LessonEditor from "./admin/LessonEditor";
+import LaunchLeads from "./admin/LaunchLeads";
 import Payments from "./admin/Payments";
 import Plans from "./admin/Plans";
 import Reviews from "./admin/Reviews";
@@ -19,6 +20,7 @@ import Catalog from "./pages/Catalog";
 import Checkout from "./pages/Checkout";
 import CoursePage from "./pages/Course";
 import Home from "./pages/Home";
+import Launch from "./pages/Launch";
 import LessonPage from "./pages/Lesson";
 import Pricing from "./pages/Pricing";
 import { Button, Empty, ToastProvider } from "./ui";
@@ -38,6 +40,7 @@ const siteRoutes: Route[] = [
 const adminRoutes: Route[] = [
   { path: "/admin", render: () => <Dashboard /> },
   { path: "/admin/payments", render: () => <Payments /> },
+  { path: "/admin/leads", render: () => <LaunchLeads /> },
   { path: "/admin/reviews", render: () => <Reviews /> },
   { path: "/admin/students", render: () => <Students /> },
   { path: "/admin/courses", render: () => <Courses /> },
@@ -70,6 +73,7 @@ function NotFound() {
 
 function Routes() {
   const { path } = useLocation();
+  if (path === "/start") return <Launch />;
   // Sign-in is a standalone split screen, as in the design system, without the app frame.
   if (path === "/login" || path === "/signup") return <AuthPage mode={path === "/login" ? "login" : "signup"} />;
   if (path === "/admin" || path.startsWith("/admin/"))

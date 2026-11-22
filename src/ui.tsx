@@ -25,6 +25,7 @@ import {
   TriangleAlert,
   type LucideIcon,
 } from "lucide-react";
+import { courseCoverUrl } from "./lib/courseCovers";
 import { Link } from "./lib/router";
 import { useI18n } from "./lib/i18n";
 import type { Category, CourseSummary, Plan } from "./lib/types";
@@ -325,11 +326,12 @@ export function Empty({ icon: Icon = BookOpen, title, children }: { icon?: Lucid
   );
 }
 
-export function CourseCover({ course, className = "course-media" }: { course: Pick<CourseSummary, "cover_url" | "category">; className?: string }) {
+export function CourseCover({ course, className = "course-media" }: { course: Pick<CourseSummary, "cover_url" | "category" | "slug">; className?: string }) {
   const meta = CATEGORY_META[course.category];
+  const cover = courseCoverUrl(course);
   return (
     <div className={`${className} tone-${meta.tone}`}>
-      {course.cover_url ? <img src={course.cover_url} alt="" loading="lazy" /> : <meta.icon strokeWidth={1.75} aria-hidden="true" />}
+      {cover ? <img src={cover} alt="" loading="lazy" decoding="async" /> : <meta.icon strokeWidth={1.75} aria-hidden="true" />}
     </div>
   );
 }
